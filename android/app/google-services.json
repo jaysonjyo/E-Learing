@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "358862481829",
+    "project_id": "e-learning-cee59",
+    "storage_bucket": "e-learning-cee59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358862481829:android:d879422fad40b9165ca04c",
+        "android_client_info": {
+          "package_name": "com.example.learning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvs2KV9CDb6jZLKjcaojbiji6OERiD-p4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
