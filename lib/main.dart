@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning/slid.dart';
 import 'package:learning/splash.dart';
+import 'package:learning/video.dart';
 
 void main() {
   runApp(const MyApp());

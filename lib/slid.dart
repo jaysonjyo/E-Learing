@@ -49,27 +49,30 @@ class _SlidState extends State<Slid> {
               title: 'Certification and Badges',
               body: 'Earn a certificate after completion of \nevery course.',
               image: Image.asset("assets/b.png")),
-          PageViewModel( decoration: PageDecoration(
-              titleTextStyle:
-              TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
-              bodyTextStyle:
-              TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
+          PageViewModel(
+              decoration: PageDecoration(
+                  titleTextStyle:
+                      TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
+                  bodyTextStyle:
+                      TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
               title: 'Progress Tracking',
               body: 'Check your Progress of every course.',
               image: Image.asset("assets/c.png")),
-          PageViewModel( decoration: PageDecoration(
-              titleTextStyle:
-              TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
-              bodyTextStyle:
-              TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
+          PageViewModel(
+              decoration: PageDecoration(
+                  titleTextStyle:
+                      TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
+                  bodyTextStyle:
+                      TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
               title: 'Offline Access',
               body: 'Make your course available offline.',
               image: Image.asset("assets/d.png")),
-          PageViewModel( decoration: PageDecoration(
-              titleTextStyle:
-              TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
-              bodyTextStyle:
-              TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
+          PageViewModel(
+              decoration: PageDecoration(
+                  titleTextStyle:
+                      TextStyle(fontSize: 26.sp, fontWeight: FontWeight.w800),
+                  bodyTextStyle:
+                      TextStyle(fontWeight: FontWeight.w400, fontSize: 18.sp)),
               title: 'Course Catalog',
               body: 'View in which courses you are enrolled.',
               image: Image.asset("assets/e.png")),
@@ -84,8 +87,21 @@ class _SlidState extends State<Slid> {
         //rtl: true, // Display as right-to-left
         back: const Icon(Icons.arrow_back),
         skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
-        next: const Icon(Icons.arrow_forward),
-        done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+        next: CircleAvatar(
+            radius: 20.r,
+            backgroundColor: Color(0xD3F8C657),
+            child: const Icon(Icons.arrow_forward)),
+        done: Container(
+            width: 70.w,
+            height: 30.h,
+            decoration: ShapeDecoration(
+                color: Color(0xD3F8C657),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5))),
+            child:  Center(
+              child: Text('Done',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+            )),
         curve: Curves.fastLinearToSlowEaseIn,
         controlsMargin: const EdgeInsets.all(16),
         controlsPadding: kIsWeb

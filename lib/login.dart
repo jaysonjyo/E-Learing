@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning/Bottam_Navigationbar.dart';
 import 'package:learning/Home.dart';
 import 'package:learning/Phonenumber.dart';
 import 'package:learning/Signup.dart';
@@ -77,7 +78,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(height: 80.h,),
-              GestureDetector(onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Home()));},
+              GestureDetector(onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>BottamNavigation()));},
                 child: Container(
                   width: 250.w,
                   height: 57.h,
