@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning/Bottam_Navigationbar.dart';
+import 'package:learning/Home.dart';
 import 'package:learning/slid.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -12,8 +15,14 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 4),(){
-      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Slid()));
+    Future.delayed(Duration(seconds: 4),()async{
+      // Obtain shared preferences.
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      if(prefs.containsKey("Token")){
+        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>BottamNavigation()));
+      }else{
+        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Slid()));
+      }
     });
     // TODO: implement initState
     super.initState();

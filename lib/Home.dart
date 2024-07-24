@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final firestore=FirebaseFirestore.instance.collection("Categories").snapshots();
 
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: false,
@@ -80,80 +82,68 @@ class _HomeState extends State<Home> {
           ),
         
         ),  SizedBox(height: 20.h,),
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Row(
-            children: [
-              Container(
-                width: 93.w,
-                height: 37.h,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFC6D6D3),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(42.r),
-                  ),),child: Center(
-                child: Text(
-                  'Bussiness',
-                  style: GoogleFonts.plusJakartaSans(textStyle:   TextStyle(
-                    color: Colors.black,
-                    fontSize: 15.sp,
-        
-                    fontWeight: FontWeight.w700,
-        
-                    letterSpacing: 0.15,)
-                  ),
+          StreamBuilder<QuerySnapshot>(
+            stream: firestore,
+            builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot) {
+              if(!snapshot.hasData){
+                return Center(child: CircularProgressIndicator());
+              }
+              if(snapshot.hasError){
+                return Center(child: Text("Error"),);
+              }
+              if(snapshot.hasData){
+              return SizedBox(width: 500..w,height: 50.h,
+                child: ListView.separated(
+                  itemCount: snapshot.data!.docs.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, position) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 10,right: 10),
+                      child: Container(
+
+                        padding: const EdgeInsets.all(10),
+                        decoration: ShapeDecoration(
+                          color: Color(0xFFC6D6D3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(19.r),
+                          ),),child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                           snapshot.data!.docs[position]["name"],
+                            style: GoogleFonts.plusJakartaSans(textStyle:   TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.sp,
+
+                              fontWeight: FontWeight.w700,
+
+                              letterSpacing: 0.15,)
+                            ),
+                          ),
+                        ),
+                      ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, position) {
+                    return SizedBox(
+                      width: 1.w,
+                    );
+                  },
+
                 ),
-              ),
-              ),
-              SizedBox(width: 9.w,),
-              Container(
-                width: 93.w,
-                height: 37.h,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFC6D6D3),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(42.r),
-                  ),),child: Center(
-                child: Text(
-                  'UI/UX',
-                  style: GoogleFonts.plusJakartaSans(textStyle:   TextStyle(
-                    color: Colors.black,
-                    fontSize: 15.sp,
-        
-                    fontWeight: FontWeight.w700,
-        
-                    letterSpacing: 0.15,)
-                  ),
-                ),
-              ),
-              ),SizedBox(width: 9.w,),
-              Container(
-                width: 159.w,
-                height: 37.h,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFC6D6D3),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(42.r),
-                  ),),child: Center(
-                child: Text(
-                  'Software Engineering',
-                  style: GoogleFonts.plusJakartaSans(textStyle:   TextStyle(
-                    color: Colors.black,
-                    fontSize: 15.sp,
-        
-                    fontWeight: FontWeight.w700,
-        
-                    letterSpacing: 0.15,)
-                  ),
-                ),
-              ),
-              ),
-            ],
+              );}else{
+                return SizedBox();
+              }
+            }
           ),
-        ),
+
+
+
+
+
+
+
         Padding(
           padding: const EdgeInsets.only(left: 15,top: 20),
           child: Row(
@@ -191,7 +181,9 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, position) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10,right: 10),
-                child: GestureDetector(onTap: (){ Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video())); },
+                child: GestureDetector(onTap: (){
+                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));
+                  },
                   child: Container(
                     width: 195.w,height: 500.h,decoration:
                     ShapeDecoration(color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
@@ -332,7 +324,9 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, position) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10,right: 10),
-                child: GestureDetector(onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));},
+                child: GestureDetector(onTap: (){
+                  //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));
+                  },
                   child: Container(
                     width: 195.w,height: 500.h,decoration:
                   ShapeDecoration(color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
@@ -470,7 +464,9 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, position) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 10,right: 10),
-                  child: GestureDetector(onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));},
+                  child: GestureDetector(onTap: (){
+                    //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));
+                    },
                     child: Container(
                       width: 195.w,height: 500.h,decoration:
                     ShapeDecoration(color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),

@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:learning/Bottam_Navigationbar.dart';
 import 'package:learning/Home.dart';
 import 'package:learning/Phonenumber.dart';
 import 'package:learning/login.dart';
 import 'package:learning/reset_Password_email.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -18,6 +20,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool isVisible = false;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -62,11 +65,18 @@ class _SignupState extends State<Signup> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: TextField(
+                  child: TextFormField(
                       controller: name,
                       decoration: InputDecoration(
-                          hintText: "Name", border: OutlineInputBorder())),
-                ),
+                          hintText: "Name", border: OutlineInputBorder()),
+                      validator: (value){
+                if (value!.isEmpty) {
+                return 'Enter name';
+                }
+                return null;
+                },
+
+                ),),
                 SizedBox(
                   height: 15.h,
                 ),
@@ -163,7 +173,7 @@ class _SignupState extends State<Signup> {
                     return 'Enter a valid password!';
                   }
                         if(password.text!=confirmpassword.text){
-                          return  "not correct password";
+                          return  "incorrect password";
 
                         }
                   return null; },),
@@ -184,6 +194,7 @@ class _SignupState extends State<Signup> {
                         Fluttertoast.showToast(msg: 'Successfully registerd');
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => BottamNavigation()));
+                        CheckLogin();
                       }).onError((error, StackTrace) {
                         Fluttertoast.showToast(msg: error.toString());
                       });
@@ -282,19 +293,23 @@ class _SignupState extends State<Signup> {
                       SizedBox(
                         width: 10.w,
                       ),
-                      Container(
-                        width: 80.h,
-                        height: 46.w,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 11),
-                        decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 1.w, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(10),
+                      GestureDetector(onTap: (){
+                        signInwithGoogle();
+                      },
+                        child: Container(
+                          width: 80.h,
+                          height: 46.w,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 11),
+                          decoration: ShapeDecoration(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 1.w, color: Colors.grey),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
+                          child: Image.asset("assets/Google.png"),
                         ),
-                        child: Image.asset("assets/Google.png"),
                       )
                     ],
                   ),
@@ -342,4 +357,38 @@ class _SignupState extends State<Signup> {
       ),
     );
   }
+  Future<String?> signInwithGoogle() async {
+    CheckLogin();
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+      await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      await auth.signInWithCredential(credential).then((onValue) {
+        Fluttertoast.showToast(msg: "Success");
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => Home()));
+      }).onError((error, stackTrace) {
+        Fluttertoast.showToast(msg: error.toString());
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      throw e;
+    }
+  }
+  void CheckLogin ()async{
+    // Obtain shared preferences.
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("Token", true);
+  }
+
+
+
+
+
+
 }

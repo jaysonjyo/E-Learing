@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learning/Phone_otp.dart';
 
@@ -11,33 +13,55 @@ class Phonenumber extends StatefulWidget {
 }
 
 class _PhonenumberState extends State<Phonenumber> {
+  TextEditingController phonenumber = TextEditingController();
+  final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only( top: 150),
+          padding: const EdgeInsets.only(top: 150),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20,right: 20),
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
-                  decoration: InputDecoration(focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
+                  controller: phonenumber,
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
                       ),
-                      ),
-                      hintText: "Phone Number",prefix: Text("+91"),
-                      enabledBorder: OutlineInputBorder(
-                         )
-                  ),
+                      hintText: "Phone Number",
+                      prefix: Text("+91"),
+                      enabledBorder: OutlineInputBorder()),
                 ),
               ),
-              SizedBox(height: 190.h,),
-              GestureDetector(onTap: () async {
-Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OTP()));
+              SizedBox(
+                height: 190.h,
+              ),
+              GestureDetector(
+                onTap: () async {
+                 await auth.verifyPhoneNumber(
+                   phoneNumber:"+91${phonenumber.text}",
+                      verificationCompleted: (Success){
 
-              },
+                      },
+                      verificationFailed: (error){
+                        Fluttertoast.showToast(msg:error.toString());
+                      },
+                      codeSent: (String verificationId,int? token) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) => OTP(Verification: verificationId,)));
+                      },
+                      codeAutoRetrievalTimeout: (tError){
+                        Fluttertoast.showToast(msg:tError.toString());
+
+                      });
+
+                },
                 child: Container(
                   width: 280.w,
                   height: 60.h,
