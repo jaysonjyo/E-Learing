@@ -104,17 +104,50 @@ class _CategorieState extends State<Categorie> {
                                     Navigator.of(context)
                                         .push(MaterialPageRoute(
                                             builder: (_) => Video(
-                                                  video: snapshot
-                                                      .data!
-                                                      .docs[index]["course"]
-                                                          [position]["video"]
-                                                      .toString(),
+                                                  video: snapshot.data!
+                                                          .docs[index]["course"]
+                                                      [position]["video"],
                                                   coursename: snapshot
                                                       .data!
                                                       .docs[index]['course']
                                                           [position]
                                                           ['coursename']
-                                                      .toString(), about: snapshot.data!.docs[index]['course'][position]['about'].toString(),
+                                                      .toString(),
+                                                  about: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                          [position]['about']
+                                                      .toString(),
+                                                  image: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                  [position]
+                                                  ['img']
+                                                      .toString(),
+                                                  rating: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                  [position]
+                                                  ['rating']
+                                                      .toString(),
+                                                  id: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                  [position]
+                                                  ['id']
+                                                      .toString(),
+                                                  tutter: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                  [position]
+                                                  ['tutter']
+                                                      .toString(),
+                                                  fee: snapshot
+                                                      .data!
+                                                      .docs[index]['course']
+                                                  [position]
+                                                  ['fee']
+                                                      .toString(),
                                                 )));
                                   },
                                   child: Container(
@@ -131,8 +164,9 @@ class _CategorieState extends State<Categorie> {
                                           height: 100.h,
                                           width: 200.w,
                                           child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10.r),
+                                            borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(10.r),
+                                                topLeft: Radius.circular(10.r)),
                                             child: Image.network(
                                               snapshot
                                                   .data!
@@ -154,7 +188,7 @@ class _CategorieState extends State<Categorie> {
                                                   snapshot
                                                       .data!
                                                       .docs[index]['course']
-                                                          [position]["raiting"]
+                                                          [position]["rating"]
                                                       .toString(),
                                                   style: TextStyle(
                                                     color: Color(0xFF060302),
@@ -175,7 +209,7 @@ class _CategorieState extends State<Categorie> {
                                                           .data!
                                                           .docs[index]['course']
                                                               [position]
-                                                              ["raiting"]
+                                                              ["rating"]
                                                           .toString()),
                                                   minRating: 1,
                                                   direction: Axis.horizontal,

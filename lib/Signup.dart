@@ -189,8 +189,8 @@ class _SignupState extends State<Signup> {
                           .createUserWithEmailAndPassword(
                           email: email.text, password: password.text)
                           .then((Value) {
-                        final id = DateTime.now().microsecondsSinceEpoch.toString();
-                        firestore.doc(id).set({"name":name.text,"email":email.text,"id":id,"security":password.text});
+
+                        firestore.doc(auth.currentUser!.uid.toString()).set({"name":name.text,"email":email.text,"id":auth.currentUser!.uid.toString(),"security":password.text});
                         Fluttertoast.showToast(msg: 'Successfully registerd');
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => BottamNavigation()));
