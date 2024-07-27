@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                     if (isValid) {
                       await  auth.signInWithEmailAndPassword(email: email.text, password: password.text).then((Value){
                       CheckLogin();
-                        Fluttertoast.showToast(msg: 'Login');
+                        Fluttertoast.showToast(msg: ' Successfully Login');
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => BottamNavigation()));
                       }).onError((error, StackTrace){  Fluttertoast.showToast(msg: error.toString());});

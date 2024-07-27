@@ -34,7 +34,7 @@ class _BottamNavigationState extends State<BottamNavigation> {
               ),
               label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book,
+              icon: Icon(Icons.bookmark,
                   color: currentIndex == 1 ? Color(0xFFF6C354) : Colors.black),
               label: "notification"),
           BottomNavigationBarItem(

@@ -83,7 +83,8 @@ bool saved =false;
         setState(() {
           saved=true;
         });
-      }else{
+      }
+      else{
         print ("dont try");
       }
 
@@ -139,7 +140,7 @@ bool saved =false;
                               setState(() {
                                 saved=false;
                               });
-                              Fluttertoast.showToast(msg: "remove");
+                              Fluttertoast.showToast(msg: "Unsaved");
                             });
                           }else{
                           firestoresub2.doc(widget.id).set({
@@ -154,7 +155,7 @@ bool saved =false;
                             setState(() {
                             saved==true;
                             });
-                            Fluttertoast.showToast(msg: "Added");
+                            Fluttertoast.showToast(msg: "Saved");
                             }).onError((error, StackTrace) {
                             Fluttertoast.showToast(msg: error.toString());
                             });}}

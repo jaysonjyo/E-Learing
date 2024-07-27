@@ -52,6 +52,8 @@ dependencies:
   shared_preferences: ^2.2.3
   readmore: ^3.0.0
   chewie: ^1.8.1
+  image_picker: ^1.1.2
+  firebase_storage:
 
 dev_dependencies:
   flutter_test:

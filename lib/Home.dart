@@ -140,7 +140,16 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.only(left: 10, right: 10),
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              decoration: ShapeDecoration(
+                              decoration: ShapeDecoration(shadows: [BoxShadow(
+                                color:Colors.grey,
+                                offset: const Offset(
+                                  5.0,
+                                  5.0,
+                                ),
+                                blurRadius: 10.0,
+                               // spreadRadius: 2.0,
+                              ), //BoxShadow
+],
                                 color: Color(0xFFC6D6D3),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(19.r),

@@ -21,7 +21,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  bool isVisible = false;
+  bool isVisible = true;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController name = TextEditingController();
@@ -29,6 +29,7 @@ class _SignupState extends State<Signup> {
   FirebaseAuth auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance.collection("users");
   var _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,17 +67,17 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: TextFormField(
-                      controller: name,
-                      decoration: InputDecoration(
-                          hintText: "Name", border: OutlineInputBorder()),
-                      validator: (value){
-                if (value!.isEmpty) {
-                return 'Enter name';
-                }
-                return null;
-                },
-
-                ),),
+                    controller: name,
+                    decoration: InputDecoration(
+                        hintText: "Name", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 15.h,
                 ),
@@ -95,17 +96,18 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                          hintText: "email", border: OutlineInputBorder()),
-                  validator: (value){
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
-                      return 'Enter a valid email!';
-                    }
-                    return null;
-                  },),
+                    controller: email,
+                    decoration: InputDecoration(
+                        hintText: "email", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty ||
+                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                        return 'Enter a valid email!';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: 15.h,
@@ -125,25 +127,26 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: TextFormField(
-                      controller: password,
-                      obscureText: isVisible,
-                      decoration: InputDecoration(
-                          hintText: "Password...",
-                          suffixIcon: InkWell(
-                            child: Icon(Icons.visibility),
-                            onTap: () {
-                              setState(() {
-                                isVisible = !isVisible;
-                              });
-                            },
-                          ),
-                          border: OutlineInputBorder()),
-                  validator: (value){
-                    if (value!.isEmpty) {
-                      return 'Enter a valid password!....';
-                    }
-                    return null;
-                  },),
+                    controller: password,
+                    obscureText: isVisible,
+                    decoration: InputDecoration(
+                        hintText: "Password...",
+                        suffixIcon: InkWell(
+                          child: Icon(Icons.visibility),
+                          onTap: () {
+                            setState(() {
+                              isVisible = !isVisible;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter a valid password!....';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -163,20 +166,21 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: TextFormField(
-                      controller: confirmpassword,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: "Confirm Password",
-                          border: OutlineInputBorder()),
-                  validator: (value){
-                        if (value!.isEmpty) {
-                    return 'Enter a valid password!';
-                  }
-                        if(password.text!=confirmpassword.text){
-                          return  "incorrect password";
-
-                        }
-                  return null; },),
+                    controller: confirmpassword,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "Confirm Password",
+                        border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter a valid password!';
+                      }
+                      if (password.text != confirmpassword.text) {
+                        return "incorrect password";
+                      }
+                      return null;
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: 30.h,
@@ -187,20 +191,24 @@ class _SignupState extends State<Signup> {
                     if (isValid) {
                       await auth
                           .createUserWithEmailAndPassword(
-                          email: email.text, password: password.text)
+                              email: email.text, password: password.text)
                           .then((Value) {
-
-                        firestore.doc(auth.currentUser!.uid.toString()).set({"name":name.text,"email":email.text,"id":auth.currentUser!.uid.toString(),"security":password.text});
+                        firestore.doc(auth.currentUser!.uid.toString()).set({
+                          "name": name.text,
+                          "email": email.text,
+                          "id": auth.currentUser!.uid.toString(),
+                          "security": password.text,
+                          "profile":""
+                        });
                         Fluttertoast.showToast(msg: 'Successfully registerd');
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => BottamNavigation()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => BottamNavigation()));
                         CheckLogin();
                       }).onError((error, StackTrace) {
                         Fluttertoast.showToast(msg: error.toString());
                       });
-                    } _formKey.currentState?.save();
-
-
+                    }
+                    _formKey.currentState?.save();
                   },
                   child: Container(
                     width: 250.w,
@@ -293,9 +301,10 @@ class _SignupState extends State<Signup> {
                       SizedBox(
                         width: 10.w,
                       ),
-                      GestureDetector(onTap: (){
-                        signInwithGoogle();
-                      },
+                      GestureDetector(
+                        onTap: () {
+                          signInwithGoogle();
+                        },
                         child: Container(
                           width: 80.h,
                           height: 46.w,
@@ -332,8 +341,8 @@ class _SignupState extends State<Signup> {
                         padding: const EdgeInsets.only(left: 2),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (_) => Login()));
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (_) => Login()));
                           },
                           child: Text('Login Here',
                               style: GoogleFonts.plusJakartaSans(
@@ -357,21 +366,21 @@ class _SignupState extends State<Signup> {
       ),
     );
   }
+
   Future<String?> signInwithGoogle() async {
     CheckLogin();
     try {
       final GoogleSignInAccount? googleSignInAccount =
-      await _googleSignIn.signIn();
+          await _googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount!.authentication;
+          await googleSignInAccount!.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
       await auth.signInWithCredential(credential).then((onValue) {
         Fluttertoast.showToast(msg: "Success");
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => Home()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => Home()));
       }).onError((error, stackTrace) {
         Fluttertoast.showToast(msg: error.toString());
       });
@@ -380,15 +389,10 @@ class _SignupState extends State<Signup> {
       throw e;
     }
   }
-  void CheckLogin ()async{
+
+  void CheckLogin() async {
     // Obtain shared preferences.
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("Token", true);
   }
-
-
-
-
-
-
 }
