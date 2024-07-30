@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning/chat.dart';
+import 'package:learning/ebokks.dart';
 import 'package:learning/editprofile.dart';
 import 'package:learning/login.dart';
 import 'package:learning/shoping_cart.dart';
@@ -127,47 +129,51 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 90.h,
                     ),
-                    Container(
-                      width: 341.w,
-                      height: 49.h,
-                      padding: const EdgeInsets.all(10),
-                      decoration: ShapeDecoration(
-                        color: Color(0xFFC6D6D3),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(
-                              Icons.edit,
-                              color: Colors.grey,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 80),
-                              child: SizedBox(
-                                width: 150.w,
-                                height: 20.h,
-                                child: Text(
-                                  "Edit",
-                                  style: GoogleFonts.plusJakartaSans(
-                                      textStyle: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 15.sp)),
+                    GestureDetector(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Editprofile(index:index,)));
+                    },
+                      child: Container(
+                        width: 341.w,
+                        height: 49.h,
+                        padding: const EdgeInsets.all(10),
+                        decoration: ShapeDecoration(
+                          color: Color(0xFFC6D6D3),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.edit,
+                                color: Colors.grey,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 80),
+                                child: SizedBox(
+                                  width: 150.w,
+                                  height: 20.h,
+                                  child: Text(
+                                    "Edit",
+                                    style: GoogleFonts.plusJakartaSans(
+                                        textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.sp)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                  Icons.keyboard_double_arrow_right_outlined),
-                              onPressed: () {
- Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Editprofile(index:index,)));
-                              },
-                            )
-                          ],
+                              // IconButton(
+                                 Icon(
+                                    Icons.keyboard_double_arrow_right_outlined),
+                                // onPressed: () {
+                                //
+                                // },
+                              // )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -215,41 +221,45 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 20.h,
                     ),
-                    Container(
-                      width: 341.w,
-                      height: 49.h,
-                      padding: const EdgeInsets.all(10),
-                      decoration: ShapeDecoration(
-                        color: Color(0xFFC6D6D3),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(
-                              Icons.help_outline_outlined,
-                              color: Colors.grey,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 80),
-                              child: SizedBox(
-                                width: 150.w,
-                                height: 20.h,
-                                child: Text(
-                                  "Help",
-                                  style: GoogleFonts.plusJakartaSans(
-                                      textStyle: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 15.sp)),
+                    GestureDetector(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Chat()));
+                    },
+                      child: Container(
+                        width: 341.w,
+                        height: 49.h,
+                        padding: const EdgeInsets.all(10),
+                        decoration: ShapeDecoration(
+                          color: Color(0xFFC6D6D3),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.help_outline_outlined,
+                                color: Colors.grey,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 80),
+                                child: SizedBox(
+                                  width: 150.w,
+                                  height: 20.h,
+                                  child: Text(
+                                    "Help",
+                                    style: GoogleFonts.plusJakartaSans(
+                                        textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.sp)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Icon(Icons.keyboard_double_arrow_right_outlined)
-                          ],
+                              Icon(Icons.keyboard_double_arrow_right_outlined)
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -280,7 +290,7 @@ class _ProfileState extends State<Profile> {
                                 width: 150.w,
                                 height: 20.h,
                                 child: Text(
-                                  "Invite a friend",
+                                  "About Us",
                                   style: GoogleFonts.plusJakartaSans(
                                       textStyle: TextStyle(
                                           color: Colors.black,

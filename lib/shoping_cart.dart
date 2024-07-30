@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,85 +16,122 @@ class ShopingCart extends StatefulWidget {
 class _ShopingCartState extends State<ShopingCart> {
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final firestore = FirebaseFirestore.instance
+        .collection("users")
+        .doc(auth.currentUser!.uid.toString())
+        .collection("ADD_Cart")
+        .snapshots();
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false,
-        title:
-        Padding(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Padding(
           padding: const EdgeInsets.only(right: 60),
           child: Center(
-            child: Text("Cart",
-              style:GoogleFonts.plusJakartaSans(textStyle:  TextStyle(
+            child: Text(
+              "Cart",
+              style: GoogleFonts.plusJakartaSans(
+                  textStyle: TextStyle(
                 color: Color(0xFF1D1B20),
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: 0.24,)
-              ),),
+                letterSpacing: 0.24,
+              )),
+            ),
           ),
         ),
         leading: IconButton(
-            onPressed: () {  Navigator.of(context).pop();},
-            icon:  Icon(Icons.arrow_back_ios_new_rounded,color: Color(0xFF477B72),),
-            ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Color(0xFF477B72),
+          ),
+        ),
       ),
-      body: Column(children: [
-        SizedBox(width: 500.w,height:750.h,
-          child: ListView.separated(
-            itemCount: 2,scrollDirection: Axis.vertical,
-            itemBuilder: (context, position) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(onTap: (){
-                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Video()));
-                  },
-                  child: Container(
-                    width: 180.w,height: 120.h,decoration:
-                  ShapeDecoration(color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
-                    child:Row(
-                      children: [
-                        Image.asset('assets/f.png',fit: BoxFit.cover,),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20,top: 10),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: firestore,
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text("error"),
+              );
+            }
+            if (snapshot.hasData) {
+              return SizedBox(
+                width: 500.w,
+                height: 700.h,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 6.0,
+                  mainAxisSpacing: 10.0,
+                  childAspectRatio: 300 / 390,
+                  shrinkWrap: true,
+                  children: List.generate(
+                    snapshot.data!.docs.length,
+                    (index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => Video(
+                                  video: snapshot.data!.docs[index]["video"],
+                                  coursename: snapshot
+                                      .data!.docs[index]["coursename"]
+                                      .toString(),
+                                  about: snapshot.data!.docs[index]["about"]
+                                      .toString(),
+                                  image: snapshot.data!.docs[index]["img"]
+                                      .toString(),
+                                  rating: snapshot.data!.docs[index]["rating"]
+                                      .toString(),
+                                  id: snapshot.data!.docs[index]["id"]
+                                      .toString(),
+                                  tutter: snapshot.data!.docs[index]["tutter"]
+                                      .toString(),
+                                  fee: snapshot.data!.docs[index]["fee"]
+                                      .toString())));
+                        },
+                        child: Container(
+                          width: 200.w,
+                          height: 500.h,
+                          decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r))),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Column(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 151.70.w,
-                                  child: Text(
-                                      'UI/UX Design',
-                                      style: GoogleFonts.plusJakartaSans(textStyle: TextStyle(
-                                        color: Color(0xFF060302),
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),)
+                                  height: 100.h,
+                                  width: 200.w,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(10.r),
+                                        topLeft: Radius.circular(10.r)),
+                                    child: Image.network(
+                                      snapshot.data!.docs[index]["img"]
+                                          .toString(),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 30,top: 5),
+                                  padding: const EdgeInsets.only(
+                                      left: 10, top: 10),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.person),
-                                      SizedBox(width: 5.w,),
-                                      Text(
-                                        'Stephen Moris',
-                                        style:GoogleFonts.notoSans(textStyle:  TextStyle(
-                                          color: Color(0xFF060302),
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w400,
-                                          letterSpacing: -0.14,)
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Opacity(
-                                  opacity: 0.50,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 40,top: 5),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          '4.5',
+                                      Opacity( opacity: 0.50,
+                                        child: Text(
+                                          snapshot.data!.docs[index]["rating"]
+                                              .toString(),
                                           style: TextStyle(
                                             color: Color(0xFF060302),
                                             fontSize: 20.sp,
@@ -101,62 +140,101 @@ class _ShopingCartState extends State<ShopingCart> {
                                             height: 0.10,
                                           ),
                                         ),
-                                        RatingBar.builder(
-                                          itemSize: 17,
-                                          initialRating: 4,
-                                          minRating: 1,
-                                          direction: Axis.horizontal,
-                                          allowHalfRating: true,
-                                          itemCount: 5,
-                                          // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                          itemBuilder: (context, _) => Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                          ),
-                                          onRatingUpdate: (rating) {
-                                            print(rating);
-                                          },
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      RatingBar.builder(
+                                        itemSize: 17,
+                                        initialRating: double.parse(snapshot
+                                            .data!.docs[index]["rating"]
+                                            .toString()),
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                        ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        },
+                                      )
+                                    ],
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 90,top: 5),
+                                  padding:
+                                      const EdgeInsets.only(left: 10, top: 5),
+                                  child: SizedBox(
+                                    width: 151.70,
+                                    child: Text(
+                                        snapshot.data!.docs[index]["coursename"]
+                                            .toString(),
+                                        style: GoogleFonts.plusJakartaSans(
+                                          textStyle: TextStyle(
+                                            color: Color(0xFF060302),
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        )),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 8, top: 6),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.person,
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        snapshot.data!.docs[index]["tutter"]
+                                            .toString(),
+                                        style: GoogleFonts.plusJakartaSans(
+                                            textStyle: TextStyle(
+                                          color: Color(0xFF060302),
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: -0.14,
+                                        )),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 8,top: 5
+                                  ),
                                   child: Text(
-                                    '\$14.50',
-                                    style: GoogleFonts.plusJakartaSans(textStyle:TextStyle(
+                                    " \$ ${snapshot.data!.docs[index]["fee"].toString()}",
+                                    style: GoogleFonts.plusJakartaSans(
+                                        textStyle: TextStyle(
                                       color: Color(0xFF477B72),
                                       fontSize: 22.sp,
                                       fontWeight: FontWeight.w800,
-                                      letterSpacing: -0.18,)
-                                    ),
+                                      letterSpacing: -0.18,
+                                    )),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
                         ),
-
-
-
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ),
               );
-            },
-            separatorBuilder: (context, position) {
-              return SizedBox(
-                height: 15.h,
-              );
-            },
-
-          ),
-
-        ),
-      ],),
+            } else {
+              return SizedBox();
+            }
+          }),
     );
   }
 }

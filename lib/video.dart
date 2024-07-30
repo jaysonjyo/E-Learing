@@ -19,18 +19,16 @@ class Video extends StatefulWidget {
   final String tutter;
   final String fee;
 
-
-  const Video({super.key,
-    required this.video,
-    required this.coursename,
-    required this.about,
-    required this.image,
-    required this.rating,
-    required this.id,
-    required this.tutter,
-    required this.fee
-
-  });
+  const Video(
+      {super.key,
+      required this.video,
+      required this.coursename,
+      required this.about,
+      required this.image,
+      required this.rating,
+      required this.id,
+      required this.tutter,
+      required this.fee});
 
   @override
   State<Video> createState() => _VideoState();
@@ -38,16 +36,16 @@ class Video extends StatefulWidget {
 
 class _VideoState extends State<Video> {
   late FlickManager flickManager;
-bool favourites=false;
-bool saved =false;
+  bool favourites = false;
+  bool saved = false;
   @override
   void initState() {
     Checkfavourite();
     CheckSaved();
     super.initState();
     flickManager = FlickManager(
-        videoPlayerController:
-        VideoPlayerController.networkUrl(Uri.parse(widget.video[0]["url"])));
+        videoPlayerController: VideoPlayerController.networkUrl(
+            Uri.parse(widget.video[0]["url"])));
   }
 
   @override
@@ -57,50 +55,58 @@ bool saved =false;
     super.dispose();
   }
 
-  Future<void> Checkfavourite () async {
+  Future<void> Checkfavourite() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    final subcollection = FirebaseFirestore.instance.collection("users").doc(auth.currentUser!.uid).collection("favourites");
-    QuerySnapshot querySnapshot=await subcollection.get();
-    for(int i=0; i<querySnapshot.docs.length;i++){
-      if(querySnapshot.docs[i]["id"].toString()==widget.id.toString()){
+    final subcollection = FirebaseFirestore.instance
+        .collection("users")
+        .doc(auth.currentUser!.uid)
+        .collection("favourites");
+    QuerySnapshot querySnapshot = await subcollection.get();
+    for (int i = 0; i < querySnapshot.docs.length; i++) {
+      if (querySnapshot.docs[i]["id"].toString() == widget.id.toString()) {
         setState(() {
-          favourites=true;
+          favourites = true;
         });
-      }else{
-        print ("not add");
+      } else {
+        print("not add");
       }
-
     }
   }
 
-
-  Future<void> CheckSaved () async {
+  Future<void> CheckSaved() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    final subcollection = FirebaseFirestore.instance.collection("users").doc(auth.currentUser!.uid).collection("saves");
-    QuerySnapshot querySnapshot=await subcollection.get();
-    for(int i=0; i<querySnapshot.docs.length;i++){
-      if(querySnapshot.docs[i]["id"].toString()==widget.id.toString()){
+    final subcollection = FirebaseFirestore.instance
+        .collection("users")
+        .doc(auth.currentUser!.uid)
+        .collection("saves");
+    QuerySnapshot querySnapshot = await subcollection.get();
+    for (int i = 0; i < querySnapshot.docs.length; i++) {
+      if (querySnapshot.docs[i]["id"].toString() == widget.id.toString()) {
         setState(() {
-          saved=true;
+          saved = true;
         });
+      } else {
+        print("dont try");
       }
-      else{
-        print ("dont try");
-      }
-
     }
   }
+
   @override
   Widget build(BuildContext context) {
-
     FirebaseAuth auth = FirebaseAuth.instance;
     final firestoresub1 = FirebaseFirestore.instance
         .collection("users")
         .doc(auth.currentUser!.uid.toString())
         .collection('favourites');
 
-    final firestoresub2  =FirebaseFirestore.instance.collection("users").doc(auth.currentUser!.uid.toString()).collection("saves");
-
+    final firestoresub2 = FirebaseFirestore.instance
+        .collection("users")
+        .doc(auth.currentUser!.uid.toString())
+        .collection("saves");
+    final firestoresub3 = FirebaseFirestore.instance
+        .collection("users")
+        .doc(auth.currentUser!.uid.toString())
+        .collection("ADD_Cart");
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -114,7 +120,7 @@ bool saved =false;
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -122,76 +128,102 @@ bool saved =false;
                       widget.coursename,
                       style: GoogleFonts.plusJakartaSans(
                           textStyle: TextStyle(
-                            color: Color(0xFF060302),
-                            fontSize: 25.sp,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: -0.14,
-                          )),
+                        color: Color(0xFF060302),
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: -0.14,
+                      )),
                     ),
-
                     Wrap(
                       children: [
                         IconButton(
-                          icon: saved== true? Icon(Icons.bookmark,size: 30.sp,color: Colors.black,):Icon(Icons.bookmark_border,size: 30.sp,), onPressed: () {
-                         CheckSaved();
-                          if(saved==true){
-                            firestoresub2.doc(widget.id).delete().then((onValue) {
-
-                              setState(() {
-                                saved=false;
-                              });
-                              Fluttertoast.showToast(msg: "Unsaved");
-                            });
-                          }else{
-                          firestoresub2.doc(widget.id).set({
-                            "id": widget.id,
-                            "img": widget.image,
-                            "rating": widget.rating,
-                            "coursename": widget.coursename,
-                            "tutter": widget.tutter,
-                            "fee": widget.fee,
-                            "video":widget.video,
-                            "about":widget.about}).then((onValue) {
-                            setState(() {
-                            saved==true;
-                            });
-                            Fluttertoast.showToast(msg: "Saved");
-                            }).onError((error, StackTrace) {
-                            Fluttertoast.showToast(msg: error.toString());
-                            });}}
-                          ,),
-                        IconButton(
-                            onPressed: () {
-                              Checkfavourite();
-                              if(favourites==true){
-                                firestoresub1.doc(widget.id).delete().then((onValue) {
-
-                                  setState(() {
-                                    favourites=false;
-                                  });
-                                  Fluttertoast.showToast(msg: "remove");
+                          icon: saved == true
+                              ? Icon(
+                                  Icons.bookmark,
+                                  size: 30.sp,
+                                  color: Colors.black,
+                                )
+                              : Icon(
+                                  Icons.bookmark_border,
+                                  size: 30.sp,
+                                ),
+                          onPressed: () {
+                            CheckSaved();
+                            if (saved == true) {
+                              firestoresub2
+                                  .doc(widget.id)
+                                  .delete()
+                                  .then((onValue) {
+                                setState(() {
+                                  saved = false;
                                 });
-                              }else{
-                              firestoresub1.doc(widget.id).set({
+                                Fluttertoast.showToast(msg: "Unsaved");
+                              });
+                            } else {
+                              firestoresub2.doc(widget.id).set({
                                 "id": widget.id,
                                 "img": widget.image,
                                 "rating": widget.rating,
                                 "coursename": widget.coursename,
                                 "tutter": widget.tutter,
                                 "fee": widget.fee,
-                                "video":widget.video,
-                                "about":widget.about
+                                "video": widget.video,
+                                "about": widget.about
                               }).then((onValue) {
                                 setState(() {
-                                  favourites==true;
+                                  saved == true;
                                 });
-                                Fluttertoast.showToast(msg: "Added");
+                                Fluttertoast.showToast(msg: "Saved");
                               }).onError((error, StackTrace) {
                                 Fluttertoast.showToast(msg: error.toString());
-                              });}
+                              });
+                            }
+                          },
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Checkfavourite();
+                              if (favourites == true) {
+                                firestoresub1
+                                    .doc(widget.id)
+                                    .delete()
+                                    .then((onValue) {
+                                  setState(() {
+                                    favourites = false;
+                                  });
+                                  Fluttertoast.showToast(msg: "remove");
+                                });
+                              } else {
+                                firestoresub1.doc(widget.id).set({
+                                  "id": widget.id,
+                                  "img": widget.image,
+                                  "rating": widget.rating,
+                                  "coursename": widget.coursename,
+                                  "tutter": widget.tutter,
+                                  "fee": widget.fee,
+                                  "video": widget.video,
+                                  "about": widget.about
+                                }).then((onValue) {
+                                  setState(() {
+                                    favourites == true;
+                                  });
+                                  Fluttertoast.showToast(msg: "Added");
+                                }).onError((error, StackTrace) {
+                                  Fluttertoast.showToast(msg: error.toString());
+                                });
+                              }
                             },
-                            icon: favourites==true ? Icon(Icons.favorite,color: Colors.red,size: 30.sp,):
-                            Icon(Icons.favorite_outline,size: 30.sp,color: Colors.black,)),
+                            icon: favourites == true
+                                ? Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 30.sp,
+                                  )
+                                : Icon(
+                                    Icons.favorite_outline,
+                                    size: 30.sp,
+                                    color: Colors.black,
+                                  )),
                       ],
                     )
                   ],
@@ -213,16 +245,16 @@ bool saved =false;
                   'About',
                   style: GoogleFonts.plusJakartaSans(
                       textStyle: TextStyle(
-                        color: Color(0xFF060302),
-                        fontSize: 25.sp,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: -0.14,
-                      )),
+                    color: Color(0xFF060302),
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -0.14,
+                  )),
                 ),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                 child: ReadMoreText(
                   widget.about,
                   style: GoogleFonts.plusJakartaSans(
@@ -234,7 +266,7 @@ bool saved =false;
                   trimCollapsedText: 'read more',
                   trimExpandedText: 'Show less',
                   moreStyle:
-                  TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
               ),
               // Padding(
@@ -271,15 +303,75 @@ bool saved =false;
                       'Start Course!',
                       style: GoogleFonts.plusJakartaSans(
                           textStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25.sp,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.36,
-                          )),
+                        color: Colors.black,
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.36,
+                      )),
                     ),
                   ),
                 ),
               ),
+              SizedBox(
+                height: 40.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  firestoresub3.doc(widget.id).set({
+                    "id": widget.id,
+                    "img": widget.image,
+                    "rating": widget.rating,
+                    "coursename": widget.coursename,
+                    "tutter": widget.tutter,
+                    "fee": widget.fee,
+                    "video": widget.video,
+                    "about": widget.about
+                  }).then((onValue) {
+                    setState(() {
+                      favourites == true;
+                    });
+                    Fluttertoast.showToast(msg: "Added");
+                  }).onError((error, StackTrace) {
+                    Fluttertoast.showToast(msg: error.toString());
+                  });
+                },
+                child: Container(
+                  width: 170.w,
+                  height: 57.h,
+                  decoration: ShapeDecoration(
+                    color: Color(0xD3F8C657),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Center(
+                    child: Wrap(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.shopping_cart_checkout_outlined),
+                        ),
+                        SizedBox(
+                          width: 9.w,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            'Add Cart',
+                            style: GoogleFonts.plusJakartaSans(
+                                textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.36,
+                            )),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

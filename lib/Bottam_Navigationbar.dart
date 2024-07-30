@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning/Home.dart';
 import 'package:learning/Profile.dart';
 import 'package:learning/favourites.dart';
-import 'package:learning/chat_list.dart';
+import 'package:learning/ebokks.dart';
 import 'package:learning/Search.dart';
 import 'package:learning/saved.dart';
 
@@ -14,7 +14,7 @@ class BottamNavigation extends StatefulWidget {
 }
 
 class _BottamNavigationState extends State<BottamNavigation> {
-  final screens = [Home(),Save(),Search(),Chat(),Profile(),];
+  final screens = [Home(),Save(),Search(),Ebook(),Profile(),];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _BottamNavigationState extends State<BottamNavigation> {
                   color: currentIndex == 2 ? Color(0xFFF6C354) : Colors.black),
               label: "cart"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.messenger_outline,
+              icon: Icon(Icons.menu_book_rounded,
                   color: currentIndex == 3 ? Color(0xFFF6C354) : Colors.black),
               label: "account"),
           BottomNavigationBarItem(

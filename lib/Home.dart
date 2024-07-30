@@ -140,13 +140,14 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.only(left: 10, right: 10),
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              decoration: ShapeDecoration(shadows: [BoxShadow(
+                              decoration: ShapeDecoration(
+                                shadows: [BoxShadow(
                                 color:Colors.grey,
                                 offset: const Offset(
                                   5.0,
                                   5.0,
                                 ),
-                                blurRadius: 10.0,
+                                blurRadius: 10.0.r,
                                // spreadRadius: 2.0,
                               ), //BoxShadow
 ],
@@ -218,7 +219,7 @@ class _HomeState extends State<Home> {
               height: 20.h,
             ),
             SizedBox(
-              width: 500..w,
+              width: 500.w,
               height: 250.h,
               child: StreamBuilder<QuerySnapshot>(
                   stream: firestore1,
@@ -290,14 +291,13 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                     ),
-                                    Opacity(
-                                      opacity: 0.50,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 13, top: 10),
-                                        child: Row(
-                                          children: [
-                                            Text(
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 13, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Opacity( opacity: 0.50,
+                                            child: Text(
                                               snapshot.data!
                                                   .docs[position]["rating"]
                                                   .toString(),
@@ -309,37 +309,37 @@ class _HomeState extends State<Home> {
                                                 height: 0.10,
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: 5.w,
+                                          ),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          RatingBar.builder(
+                                            itemSize: 17.sp,
+                                            initialRating: double.parse(
+                                                snapshot.data!
+                                                    .docs[position]["rating"]
+                                                    .toString()),
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                            itemBuilder: (context, _) => Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
                                             ),
-                                            RatingBar.builder(
-                                              itemSize: 17,
-                                              initialRating: double.parse(
-                                                  snapshot.data!
-                                                      .docs[position]["rating"]
-                                                      .toString()),
-                                              minRating: 1,
-                                              direction: Axis.horizontal,
-                                              allowHalfRating: true,
-                                              itemCount: 5,
-                                              // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                              itemBuilder: (context, _) => Icon(
-                                                Icons.star,
-                                                color: Colors.amber,
-                                              ),
-                                              onRatingUpdate: (rating) {
-                                                print(rating);
-                                              },
-                                            )
-                                          ],
-                                        ),
+                                            onRatingUpdate: (rating) {
+                                              print(rating);
+                                            },
+                                          )
+                                        ],
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           right: 20, top: 10),
                                       child: SizedBox(
-                                        width: 151.70,
+                                        width: 151.70.w,
                                         child: Text(
                                             snapshot.data!
                                                 .docs[position]["coursename"]
@@ -514,14 +514,13 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                     ),
-                                    Opacity(
-                                      opacity: 0.50,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 12, top: 10),
-                                        child: Row(
-                                          children: [
-                                            Text(
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 12, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Opacity(   opacity: 0.50,
+                                            child: Text(
                                               snapshot.data!
                                                   .docs[position]["rating"]
                                                   .toString(),
@@ -533,34 +532,34 @@ class _HomeState extends State<Home> {
                                                 height: 0.10,
                                               ),
                                             ),
-                                            RatingBar.builder(
-                                              itemSize: 17,
-                                              initialRating: double.parse(
-                                                  snapshot.data!
-                                                      .docs[position]["rating"]
-                                                      .toString()),
-                                              minRating: 1,
-                                              direction: Axis.horizontal,
-                                              allowHalfRating: true,
-                                              itemCount: 5,
-                                              // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                              itemBuilder: (context, _) => Icon(
-                                                Icons.star,
-                                                color: Colors.amber,
-                                              ),
-                                              onRatingUpdate: (rating) {
-                                                print(rating);
-                                              },
-                                            )
-                                          ],
-                                        ),
+                                          ),SizedBox(width: 5.w,),
+                                          RatingBar.builder(
+                                            itemSize: 17.sp,
+                                            initialRating: double.parse(
+                                                snapshot.data!
+                                                    .docs[position]["rating"]
+                                                    .toString()),
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                            itemBuilder: (context, _) => Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                            ),
+                                            onRatingUpdate: (rating) {
+                                              print(rating);
+                                            },
+                                          )
+                                        ],
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           right: 20, top: 10),
                                       child: SizedBox(
-                                        width: 151.70,
+                                        width: 151.70.w,
                                         child: Text(
                                             snapshot.data!
                                                 .docs[position]["coursename"]
@@ -733,14 +732,13 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                     ),
-                                    Opacity(
-                                      opacity: 0.50,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 13, top: 10),
-                                        child: Row(
-                                          children: [
-                                            Text(
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 13, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Opacity(   opacity: 0.50,
+                                            child: Text(
                                               snapshot.data!
                                                   .docs[position]["rating"]
                                                   .toString(),
@@ -752,37 +750,37 @@ class _HomeState extends State<Home> {
                                                 height: 0.10,
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: 5.w,
+                                          ),
+                                          SizedBox(
+                                            width: 5.w,
+                                          ),
+                                          RatingBar.builder(
+                                            itemSize: 17.sp,
+                                            initialRating: double.parse(
+                                                snapshot.data!
+                                                    .docs[position]["rating"]
+                                                    .toString()),
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                            itemBuilder: (context, _) => Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
                                             ),
-                                            RatingBar.builder(
-                                              itemSize: 17,
-                                              initialRating: double.parse(
-                                                  snapshot.data!
-                                                      .docs[position]["rating"]
-                                                      .toString()),
-                                              minRating: 1,
-                                              direction: Axis.horizontal,
-                                              allowHalfRating: true,
-                                              itemCount: 5,
-                                              // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                              itemBuilder: (context, _) => Icon(
-                                                Icons.star,
-                                                color: Colors.amber,
-                                              ),
-                                              onRatingUpdate: (rating) {
-                                                print(rating);
-                                              },
-                                            )
-                                          ],
-                                        ),
+                                            onRatingUpdate: (rating) {
+                                              print(rating);
+                                            },
+                                          )
+                                        ],
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           right: 20, top: 10),
                                       child: SizedBox(
-                                        width: 151.70,
+                                        width: 151.70.w,
                                         child: Text(
                                             snapshot.data!
                                                 .docs[position]["coursename"]

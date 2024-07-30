@@ -94,7 +94,7 @@ class _EditprofileState extends State<Editprofile> {
                                 width: 130.w,
                                 height: 130,
                                 decoration: ShapeDecoration(
-                                    color: Colors.red,
+                                    color: Colors.white,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(65))),
                                 child: ClipOval(
@@ -103,7 +103,7 @@ class _EditprofileState extends State<Editprofile> {
                                           image!.absolute,
                                           fit: BoxFit.fill,
                                         )
-                                      : Center(child: Icon(Icons.image)),
+                                      : Center(child: Icon(Icons.person,size: 50.sp,)),
                                 ),
                               )),
                           Padding(
@@ -135,12 +135,13 @@ class _EditprofileState extends State<Editprofile> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10.0))),
-                                title: Text("Edit"),
+                                title: Text("Enter your name"),
                                 content: TextField(
                                   controller: name,
                                   decoration: InputDecoration(
-                                      hintText: "....",
-                                      border: OutlineInputBorder()),
+                                      border: OutlineInputBorder(
+
+                                      )),
                                 ),
                                 actions: [
                                   TextButton(

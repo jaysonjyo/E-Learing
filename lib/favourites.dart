@@ -134,14 +134,13 @@ class _FavouritesState extends State<Favourites> {
                                     ),
                                   ),
                                 ),
-                                Opacity(
-                                  opacity: 0.50,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, top: 10),
-                                    child: Row(
-                                      children: [
-                                        Text(
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Opacity( opacity: 0.50,
+                                        child: Text(
                                           snapshot.data!.docs[index]["rating"]
                                               .toString(),
                                           style: TextStyle(
@@ -152,29 +151,29 @@ class _FavouritesState extends State<Favourites> {
                                             height: 0.10,
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 5.w,
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      RatingBar.builder(
+                                        itemSize: 17,
+                                        initialRating: double.parse(snapshot
+                                            .data!.docs[index]["rating"]
+                                            .toString()),
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
                                         ),
-                                        RatingBar.builder(
-                                          itemSize: 17,
-                                          initialRating: double.parse(snapshot
-                                              .data!.docs[index]["rating"]
-                                              .toString()),
-                                          minRating: 1,
-                                          direction: Axis.horizontal,
-                                          allowHalfRating: true,
-                                          itemCount: 5,
-                                          // itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                          itemBuilder: (context, _) => Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                          ),
-                                          onRatingUpdate: (rating) {
-                                            print(rating);
-                                          },
-                                        )
-                                      ],
-                                    ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        },
+                                      )
+                                    ],
                                   ),
                                 ),
                                 Padding(
