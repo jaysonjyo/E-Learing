@@ -31,7 +31,7 @@ class _FavouritesState extends State<Favourites> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: const EdgeInsets.only(left: 50),
+          padding:  EdgeInsets.only(left: 50.w),
           child: Center(
             child: Text(
               "Courses",
@@ -40,14 +40,14 @@ class _FavouritesState extends State<Favourites> {
                 color: Color(0xFF1D1B20),
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: 0.24,
+                letterSpacing: 0.24.w,
               )),
             ),
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 5),
+            padding:  EdgeInsets.only(right: 5.w),
             child: IconButton(
               onPressed: () {
                 Navigator.of(context)
@@ -55,7 +55,7 @@ class _FavouritesState extends State<Favourites> {
               },
               icon: Icon(
                 Icons.shopping_cart_outlined,
-                size: 29,
+                size: 29.sp,
               ),
             ),
           )
@@ -117,7 +117,7 @@ class _FavouritesState extends State<Favourites> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.r))),
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
+                            padding:  EdgeInsets.all(5.0.sp),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -135,8 +135,8 @@ class _FavouritesState extends State<Favourites> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, top: 10),
+                                  padding:  EdgeInsets.only(
+                                      left: 10.w, top: 10.h),
                                   child: Row(
                                     children: [
                                       Opacity( opacity: 0.50,
@@ -148,7 +148,7 @@ class _FavouritesState extends State<Favourites> {
                                             fontSize: 20.sp,
                                             fontFamily: 'Inter',
                                             fontWeight: FontWeight.w600,
-                                            height: 0.10,
+                                            height: 0.10.h,
                                           ),
                                         ),
                                       ),
@@ -156,7 +156,7 @@ class _FavouritesState extends State<Favourites> {
                                         width: 5.w,
                                       ),
                                       RatingBar.builder(
-                                        itemSize: 17,
+                                        itemSize: 17.sp,
                                         initialRating: double.parse(snapshot
                                             .data!.docs[index]["rating"]
                                             .toString()),
@@ -178,9 +178,9 @@ class _FavouritesState extends State<Favourites> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(right: 10, top: 5),
+                                       EdgeInsets.only(right: 10.w, top: 5.h),
                                   child: SizedBox(
-                                    width: 151.70,
+                                    width: 151.70.w,
                                     child: Text(
                                         snapshot.data!.docs[index]["coursename"]
                                             .toString(),
@@ -195,7 +195,7 @@ class _FavouritesState extends State<Favourites> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 8, top: 6),
+                                       EdgeInsets.only(left: 8.w, top: 6.h),
                                   child: Row(
                                     children: [
                                       Icon(Icons.person,),
@@ -210,7 +210,7 @@ class _FavouritesState extends State<Favourites> {
                                           color: Color(0xFF060302),
                                           fontSize: 18.sp,
                                           fontWeight: FontWeight.w400,
-                                          letterSpacing: -0.14,
+                                          letterSpacing: -0.14.w,
                                         )),
                                       )
                                     ],
@@ -218,7 +218,7 @@ class _FavouritesState extends State<Favourites> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 8,),
+                                       EdgeInsets.only(left: 8.w,),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -230,7 +230,7 @@ class _FavouritesState extends State<Favourites> {
                                           color: Color(0xFF477B72),
                                           fontSize: 22.sp,
                                           fontWeight: FontWeight.w800,
-                                          letterSpacing: -0.18,
+                                          letterSpacing: -0.18.w,
                                         )),
                                       ),
                                       IconButton(

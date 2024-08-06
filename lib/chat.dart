@@ -54,7 +54,7 @@ class _ChatState extends State<Chat> {
                 color: Colors.black,
                 fontSize: 17.sp,
                 fontWeight: FontWeight.w700,
-                letterSpacing: 0.18,
+                letterSpacing: 0.18.w,
               )),
             )
           ],
@@ -83,11 +83,11 @@ class _ChatState extends State<Chat> {
                                 ChatBubble(
                                   clipper: ChatBubbleClipper1(type: BubbleType.sendBubble),
                                   alignment: Alignment.topRight,
-                                  margin: EdgeInsets.only(top: 20),
+                                  margin: EdgeInsets.only(top: 20.h),
                                   backGroundColor: Colors.blue,
                                   child: Container(
                                     constraints: BoxConstraints(
-                                      maxWidth: MediaQuery.of(context).size.width * 0.7,
+                                      maxWidth: MediaQuery.of(context).size.width * 0.7.w,
                                     ),
                                     child: Text(
                                      snapshot.data!.docs[position]["message"].toString(),
@@ -101,11 +101,11 @@ class _ChatState extends State<Chat> {
                             ChatBubble(
                               clipper: ChatBubbleClipper1(type: BubbleType.receiverBubble),
                               alignment: Alignment.topLeft,
-                              margin: EdgeInsets.only(top: 20),
+                              margin: EdgeInsets.only(top: 20.h),
                               backGroundColor: Colors.red,
                               child: Container(
                                 constraints: BoxConstraints(
-                                  maxWidth: MediaQuery.of(context).size.width * 0.7,
+                                  maxWidth: MediaQuery.of(context).size.width * 0.7.w,
                                 ),
                                 child: Text(
                                   snapshot.data!.docs[position]["respones"].toString(),
@@ -113,24 +113,6 @@ class _ChatState extends State<Chat> {
                                 ),
                               ),
                             ),
-                            // if(snapshot.data!.docs[position]["respones"] !="")
-                            // //respones
-                            // ChatBubble(
-                            //   clipper: ChatBubbleClipper1(type: BubbleType.receiverBubble),
-                            //   alignment: Alignment.topLeft,
-                            //   margin: EdgeInsets.only(top: 20),
-                            //   backGroundColor: Colors.grey,
-                            //   child: Container(
-                            //     constraints: BoxConstraints(
-                            //       maxWidth: MediaQuery.of(context).size.width * 0.7,
-                            //     ),
-                            //     child: Text(
-                            //       snapshot.data!.docs[position]["respones"].toString(),
-                            //       style: TextStyle(color: Colors.white),
-                            //     ),
-                            //   ),
-                            // )
-
                           ],
                         );
                       },
@@ -152,7 +134,7 @@ class _ChatState extends State<Chat> {
         ],
       ),
       bottomSheet: Padding(
-        padding: const EdgeInsets.only(bottom: 20, right: 15, left: 15),
+        padding:  EdgeInsets.only(bottom: 20.h, right: 15.w, left: 15.w),
         child: TextField(
           controller: chattext,
           decoration: InputDecoration(
@@ -173,7 +155,7 @@ class _ChatState extends State<Chat> {
                 ),
               ),
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10.r))),
         ),
       ),
 

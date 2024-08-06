@@ -37,16 +37,16 @@ class _CategorieState extends State<Categorie> {
               color: Color(0xFF1D1B20),
               fontSize: 24.sp,
               fontWeight: FontWeight.w800,
-              letterSpacing: 0.24,
+              letterSpacing: 0.24.w,
             )),
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding:  EdgeInsets.only(right: 20.w),
             child: Icon(
               Icons.shopping_cart_outlined,
-              size: 29,
+              size: 29.sp,
             ),
           )
         ],
@@ -75,13 +75,13 @@ class _CategorieState extends State<Categorie> {
                       reverse: true,
                       itemBuilder: (context, index, con) {
                         return ExpandedTile(
-                          theme: const ExpandedTileThemeData(
+                          theme:  ExpandedTileThemeData(
                             headerColor: Color(0xFFC6D6D3),
-                            headerPadding: EdgeInsets.all(24.0),
+                            headerPadding: EdgeInsets.all(24.0.sp),
                             headerSplashColor: Color(0xFFF6C354),
                             //
                             contentBackgroundColor: Colors.white38,
-                            contentPadding: EdgeInsets.all(24.0),
+                            contentPadding: EdgeInsets.all(24.0.sp),
                           ),
                           controller: con,
                           title: Text(
@@ -178,8 +178,8 @@ class _CategorieState extends State<Categorie> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 13, top: 10),
+                                          padding:  EdgeInsets.only(
+                                              left: 13.w, top: 10.h),
                                           child: Row(
                                             children: [
                                               Opacity( opacity: 0.50,
@@ -194,7 +194,7 @@ class _CategorieState extends State<Categorie> {
                                                     fontSize: 17.sp,
                                                     fontFamily: 'Inter',
                                                     fontWeight: FontWeight.w600,
-                                                    height: 0.10,
+                                                    height: 0.10.h,
                                                   ),
                                                 ),
                                               ),
@@ -202,7 +202,7 @@ class _CategorieState extends State<Categorie> {
                                                 width: 5.w,
                                               ),
                                               RatingBar.builder(
-                                                itemSize: 17,
+                                                itemSize: 17.sp,
                                                 tapOnlyMode: true,
                                                 initialRating: double.parse(
                                                     snapshot
@@ -229,8 +229,8 @@ class _CategorieState extends State<Categorie> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 20, top: 10),
+                                          padding:  EdgeInsets.only(
+                                              right: 20.w, top: 10.h),
                                           child: SizedBox(
                                             width: 151.70,
                                             child: Text(
@@ -250,8 +250,8 @@ class _CategorieState extends State<Categorie> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, top: 6),
+                                          padding:  EdgeInsets.only(
+                                              left: 10.w, top: 6.h),
                                           child: Row(
                                             children: [
                                               Icon(Icons.person),
@@ -270,15 +270,15 @@ class _CategorieState extends State<Categorie> {
                                                   color: Color(0xFF060302),
                                                   fontSize: 18.sp,
                                                   fontWeight: FontWeight.w400,
-                                                  letterSpacing: -0.14,
+                                                  letterSpacing: -0.14.w,
                                                 )),
                                               )
                                             ],
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 110, top: 5),
+                                          padding:  EdgeInsets.only(
+                                              right: 120.w, top: 5.h),
                                           child: Text(
                                             "\$ ${snapshot.data!.docs[index]["course"][position]["fee"].toString()}",
                                             style: GoogleFonts.plusJakartaSans(
@@ -286,7 +286,7 @@ class _CategorieState extends State<Categorie> {
                                               color: Color(0xFF477B72),
                                               fontSize: 22.sp,
                                               fontWeight: FontWeight.w800,
-                                              letterSpacing: -0.18,
+                                              letterSpacing: -0.18.w,
                                             )),
                                           ),
                                         ),

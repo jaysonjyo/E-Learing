@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
                   height: 120.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 285),
+                  padding:  EdgeInsets.only(right: 285.w),
                   child: Text(
                     "Email",
                     style: GoogleFonts.plusJakartaSans(
@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                   height: 7.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
                     controller: email,
                       decoration: InputDecoration(
@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                   height: 50.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 248),
+                  padding:  EdgeInsets.only(right: 248.w),
                   child: Text(
                     'Password',
                     style: GoogleFonts.plusJakartaSans(
@@ -91,7 +91,7 @@ class _LoginState extends State<Login> {
                   height: 7.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
                     controller: password,
                     obscureText: isVisible,
@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 220, top: 12),
+                  padding:  EdgeInsets.only(left: 220.w, top: 12.h),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context)
@@ -124,8 +124,7 @@ class _LoginState extends State<Login> {
                             color: Color(0xFFF8C657),
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
-                            height: 0,
-                            letterSpacing: 0.24,
+                            letterSpacing: 0.24.w,
                           ),
                         )),
                   ),
@@ -156,7 +155,7 @@ class _LoginState extends State<Login> {
                     decoration: ShapeDecoration(
                       color: Color(0xD3F8C657),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(15.r),
                       ),
                     ),
                     child: Center(
@@ -167,7 +166,7 @@ class _LoginState extends State<Login> {
                           color: Colors.black,
                           fontSize: 25.sp,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: 0.36,
+                          letterSpacing: 0.36.w,
                         )),
                       ),
                     ),
@@ -177,7 +176,7 @@ class _LoginState extends State<Login> {
                   height: 20.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 13),
+                  padding:  EdgeInsets.only(left: 13.w),
                   child: Row(
                     children: [
                       SizedBox(
@@ -195,8 +194,7 @@ class _LoginState extends State<Login> {
                               color: Colors.black,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                              height: 0,
-                              letterSpacing: 0.26,
+                              letterSpacing: 0.26.w,
                             ),
                           )),
                       SizedBox(
@@ -212,7 +210,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 100, top: 20),
+                  padding:  EdgeInsets.only(left: 100.w, top: 20.h),
                   child: Row(
                     children: [
                       GestureDetector(
@@ -223,13 +221,13 @@ class _LoginState extends State<Login> {
                         child: Container(
                           width: 80.h,
                           height: 46.w,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 11),
+                          padding:  EdgeInsets.symmetric(
+                              horizontal: 15.w, vertical: 11.h),
                           decoration: ShapeDecoration(
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
                               side: BorderSide(width: 1.w, color: Colors.grey),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
                           child: Icon(
@@ -247,13 +245,13 @@ class _LoginState extends State<Login> {
                         child: Container(
                           width: 80.h,
                           height: 46.w,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 11),
+                          padding:  EdgeInsets.symmetric(
+                              horizontal: 15.w, vertical: 11.h),
                           decoration: ShapeDecoration(
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
                               side: BorderSide(width: 1.w, color: Colors.grey),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
                           child: Image.asset("assets/Google.png"),
@@ -263,7 +261,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 80, top: 20),
+                  padding:  EdgeInsets.only(left: 80.w, top: 20.h),
                   child: Row(
                     children: [
                       Text('Don’t have an account?',
@@ -272,12 +270,11 @@ class _LoginState extends State<Login> {
                               color: Colors.black,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
-                              height: 0,
-                              letterSpacing: 0.26,
+                              letterSpacing: 0.26.w,
                             ),
                           )),
                       Padding(
-                        padding: const EdgeInsets.only(left: 2),
+                        padding:  EdgeInsets.only(left: 2.w),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
@@ -289,8 +286,7 @@ class _LoginState extends State<Login> {
                                   color: Color(0xFFF8C657),
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.w600,
-                                  height: 0,
-                                  letterSpacing: 0.26,
+                                  letterSpacing: 0.26.w,
                                 ),
                               )),
                         ),

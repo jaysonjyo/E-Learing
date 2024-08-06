@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning/Home.dart';
 import 'package:learning/Profile.dart';
 import 'package:learning/favourites.dart';
-import 'package:learning/ebokks.dart';
+import 'package:learning/ebooks.dart';
 import 'package:learning/Search.dart';
 import 'package:learning/saved.dart';
 

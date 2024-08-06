@@ -21,11 +21,11 @@ class _PhonenumberState extends State<Phonenumber> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 150),
+          padding:  EdgeInsets.only(top: 150.h),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding:  EdgeInsets.only(left: 20.w, right: 20.w),
                 child: TextField(
                   controller: phonenumber,
                   decoration: InputDecoration(
@@ -68,7 +68,7 @@ class _PhonenumberState extends State<Phonenumber> {
                   decoration: ShapeDecoration(
                       color: Colors.black,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           side: BorderSide(
                               width: 0.10.w, color: Colors.black12))),
                   child: Center(

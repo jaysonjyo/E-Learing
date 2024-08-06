@@ -53,7 +53,7 @@ class _EditprofileState extends State<Editprofile> {
             color: Colors.white,
             fontSize: 24.sp,
             fontWeight: FontWeight.w800,
-            letterSpacing: 0.24,
+            letterSpacing: 0.24.w,
           )),
         ),
         leading: IconButton(
@@ -89,14 +89,14 @@ class _EditprofileState extends State<Editprofile> {
                       child: Stack(
                         children: [
                           Padding(
-                              padding: const EdgeInsets.only(top: 50),
+                              padding:  EdgeInsets.only(top: 50.h),
                               child: Container(
                                 width: 130.w,
-                                height: 130,
+                                height: 130.h,
                                 decoration: ShapeDecoration(
                                     color: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(65))),
+                                        borderRadius: BorderRadius.circular(65.r))),
                                 child: ClipOval(
                                   child: image != null
                                       ? Image.file(
@@ -107,7 +107,7 @@ class _EditprofileState extends State<Editprofile> {
                                 ),
                               )),
                           Padding(
-                            padding: const EdgeInsets.only(top: 135, left: 75),
+                            padding:  EdgeInsets.only(top: 135.h, left: 75.w),
                             child: IconButton(
                               onPressed: () {
                                 getImageGallery();
@@ -115,7 +115,7 @@ class _EditprofileState extends State<Editprofile> {
                               icon: Icon(
                                 Icons.add_a_photo,
                                 color: Colors.green,
-                                size: 30,
+                                size: 30.sp,
                               ),
                             ),
                           )
@@ -134,7 +134,7 @@ class _EditprofileState extends State<Editprofile> {
                               child: AlertDialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0))),
+                                        BorderRadius.all(Radius.circular(10.0.r))),
                                 title: Text("Enter your name"),
                                 content: TextField(
                                   controller: name,
@@ -188,11 +188,11 @@ class _EditprofileState extends State<Editprofile> {
                             color: Colors.black12,
                             shape: RoundedRectangleBorder()),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding:  EdgeInsets.only(left: 10.w),
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 60),
+                                padding: EdgeInsets.only(bottom: 60.h),
                                 child: Icon(
                                   Icons.person_outlined,
                                   color: Colors.grey,
@@ -203,7 +203,7 @@ class _EditprofileState extends State<Editprofile> {
                                 width: 19.w,
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                padding:  EdgeInsets.symmetric(vertical: 10.h),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -214,7 +214,7 @@ class _EditprofileState extends State<Editprofile> {
                                         color: Colors.grey,
                                         fontSize: 15.sp,
                                         fontWeight: FontWeight.w400,
-                                        letterSpacing: 0.24,
+                                        letterSpacing: 0.24.w,
                                       )),
                                     ),
                                     SizedBox(
@@ -231,7 +231,7 @@ class _EditprofileState extends State<Editprofile> {
                                             color: Colors.white,
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w800,
-                                            letterSpacing: 0.24,
+                                            letterSpacing: 0.24.w,
                                           )),
                                         ),
                                         SizedBox(
@@ -253,7 +253,7 @@ class _EditprofileState extends State<Editprofile> {
                                         color: Colors.grey,
                                         fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
-                                        letterSpacing: 0.24,
+                                        letterSpacing: 0.24.w,
                                       )),
                                     ),
                                   ],
@@ -265,7 +265,7 @@ class _EditprofileState extends State<Editprofile> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 55),
+                      padding: EdgeInsets.only(left: 55.w),
                       child: Divider(
                         height: 1.h,
                         thickness: 1,
@@ -310,7 +310,7 @@ class _EditprofileState extends State<Editprofile> {
                                   color: Colors.white,
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.w800,
-                                  letterSpacing: 0.24,
+                                  letterSpacing: 0.24.w,
                                 )),
                           ),
                         ),

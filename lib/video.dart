@@ -120,7 +120,7 @@ class _VideoState extends State<Video> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                     EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -131,7 +131,7 @@ class _VideoState extends State<Video> {
                         color: Color(0xFF060302),
                         fontSize: 25.sp,
                         fontWeight: FontWeight.w700,
-                        letterSpacing: -0.14,
+                        letterSpacing: -0.14.w,
                       )),
                     ),
                     Wrap(
@@ -233,14 +233,14 @@ class _VideoState extends State<Video> {
                 height: 10.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
+                padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                 child: Divider(
                   thickness: 2,
                   height: 2.h,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30, right: 299),
+                padding:  EdgeInsets.only(top: 30.h, right: 299.w),
                 child: Text(
                   'About',
                   style: GoogleFonts.plusJakartaSans(
@@ -248,13 +248,13 @@ class _VideoState extends State<Video> {
                     color: Color(0xFF060302),
                     fontSize: 25.sp,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: -0.14,
+                    letterSpacing: -0.14.w,
                   )),
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                     EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
                 child: ReadMoreText(
                   widget.about,
                   style: GoogleFonts.plusJakartaSans(
@@ -266,7 +266,7 @@ class _VideoState extends State<Video> {
                   trimCollapsedText: 'read more',
                   trimExpandedText: 'Show less',
                   moreStyle:
-                      TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               // Padding(
@@ -287,7 +287,9 @@ class _VideoState extends State<Video> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Course_Video()));
+                      .push(MaterialPageRoute(builder: (_) => Course_Video(videolist: widget.video,
+
+                  )));
                 },
                 child: Container(
                   width: 250.w,
@@ -295,7 +297,7 @@ class _VideoState extends State<Video> {
                   decoration: ShapeDecoration(
                     color: Color(0xD3F8C657),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(15.r),
                     ),
                   ),
                   child: Center(
@@ -306,7 +308,7 @@ class _VideoState extends State<Video> {
                         color: Colors.black,
                         fontSize: 25.sp,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 0.36,
+                        letterSpacing: 0.36.w,
                       )),
                     ),
                   ),
@@ -327,9 +329,6 @@ class _VideoState extends State<Video> {
                     "video": widget.video,
                     "about": widget.about
                   }).then((onValue) {
-                    setState(() {
-                      favourites == true;
-                    });
                     Fluttertoast.showToast(msg: "Added");
                   }).onError((error, StackTrace) {
                     Fluttertoast.showToast(msg: error.toString());
@@ -341,21 +340,21 @@ class _VideoState extends State<Video> {
                   decoration: ShapeDecoration(
                     color: Color(0xD3F8C657),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(15.r),
                     ),
                   ),
                   child: Center(
                     child: Wrap(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.sp),
                           child: Icon(Icons.shopping_cart_checkout_outlined),
                         ),
                         SizedBox(
                           width: 9.w,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5),
+                          padding:  EdgeInsets.only(top: 5.h),
                           child: Text(
                             'Add Cart',
                             style: GoogleFonts.plusJakartaSans(
@@ -363,7 +362,7 @@ class _VideoState extends State<Video> {
                               color: Colors.black,
                               fontSize: 25.sp,
                               fontWeight: FontWeight.w600,
-                              letterSpacing: 0.36,
+                              letterSpacing: 0.36.w,
                             )),
                           ),
                         ),

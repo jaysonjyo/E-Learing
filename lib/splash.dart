@@ -36,12 +36,12 @@ SizedBox(height: 250.h,),
 Stack(
   children: [
     Padding(
-      padding: const EdgeInsets.only(top: 80,left: 15),
+      padding:  EdgeInsets.only(top: 80.h,left: 15.w),
       child: SizedBox(width: 400.w,height: 120.h,
           child: Image.asset("assets/splash.png")),
     ),
 Padding(
-  padding: const EdgeInsets.only(top: 20),
+  padding:  EdgeInsets.only(top: 20.h),
   child: RotationTransition(turns: AlwaysStoppedAnimation(-10/320),
     child: SizedBox(
         width:120.w,height:150.h,child: Image.asset("assets/a.png")),

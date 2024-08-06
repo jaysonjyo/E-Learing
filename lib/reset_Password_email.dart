@@ -29,7 +29,7 @@ class _EmailresetState extends State<Emailreset> {
               )),
           SizedBox(height: 80.h,),
           Padding(
-            padding: const EdgeInsets.only(right: 285),
+            padding:  EdgeInsets.only(right: 285.w),
             child: Text(
               "Email",
               style: GoogleFonts.plusJakartaSans(
@@ -39,7 +39,7 @@ class _EmailresetState extends State<Emailreset> {
           ),
           SizedBox(height: 7.h,),
           Padding(
-            padding: const EdgeInsets.only(left: 30,right: 30),
+            padding:  EdgeInsets.only(left: 30.w,right: 30.w),
             child: TextField(
                 controller:email,
                 decoration: InputDecoration(hintText: "email",border: OutlineInputBorder())),
@@ -59,7 +59,7 @@ class _EmailresetState extends State<Emailreset> {
               decoration: ShapeDecoration(
                 color: Color(0xD3F8C657),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
               ),
               child: Center(
@@ -69,7 +69,7 @@ class _EmailresetState extends State<Emailreset> {
                     color: Colors.black,
                     fontSize: 25.sp,
                     fontWeight: FontWeight.w600,
-                    letterSpacing: 0.36,)
+                    letterSpacing: 0.36.w,)
                   ),
                 ),
               ),

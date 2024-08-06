@@ -26,7 +26,7 @@ class _ShopingCartState extends State<ShopingCart> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: const EdgeInsets.only(right: 60),
+          padding:  EdgeInsets.only(right: 60.w),
           child: Center(
             child: Text(
               "Cart",
@@ -35,7 +35,7 @@ class _ShopingCartState extends State<ShopingCart> {
                 color: Color(0xFF1D1B20),
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: 0.24,
+                letterSpacing: 0.24.w,
               )),
             ),
           ),
@@ -106,7 +106,7 @@ class _ShopingCartState extends State<ShopingCart> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.r))),
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
+                            padding:  EdgeInsets.all(5.0.sp),
                             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
@@ -124,8 +124,8 @@ class _ShopingCartState extends State<ShopingCart> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, top: 10),
+                                  padding:  EdgeInsets.only(
+                                      left: 10.w, top: 10.h),
                                   child: Row(
                                     children: [
                                       Opacity( opacity: 0.50,
@@ -137,7 +137,7 @@ class _ShopingCartState extends State<ShopingCart> {
                                             fontSize: 20.sp,
                                             fontFamily: 'Inter',
                                             fontWeight: FontWeight.w600,
-                                            height: 0.10,
+                                            height: 0.10.h,
                                           ),
                                         ),
                                       ),
@@ -145,7 +145,7 @@ class _ShopingCartState extends State<ShopingCart> {
                                         width: 5.w,
                                       ),
                                       RatingBar.builder(
-                                        itemSize: 17,
+                                        itemSize: 17.sp,
                                         initialRating: double.parse(snapshot
                                             .data!.docs[index]["rating"]
                                             .toString()),
@@ -167,9 +167,9 @@ class _ShopingCartState extends State<ShopingCart> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 10, top: 5),
+                                       EdgeInsets.only(left: 10.w, top: 5.h),
                                   child: SizedBox(
-                                    width: 151.70,
+                                    width: 151.70.w,
                                     child: Text(
                                         snapshot.data!.docs[index]["coursename"]
                                             .toString(),
@@ -184,7 +184,7 @@ class _ShopingCartState extends State<ShopingCart> {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 8, top: 6),
+                                       EdgeInsets.only(left: 8.w, top: 6.h),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -201,15 +201,15 @@ class _ShopingCartState extends State<ShopingCart> {
                                           color: Color(0xFF060302),
                                           fontSize: 18.sp,
                                           fontWeight: FontWeight.w400,
-                                          letterSpacing: -0.14,
+                                          letterSpacing: -0.14.w,
                                         )),
                                       )
                                     ],
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 8,top: 5
+                                  padding:  EdgeInsets.only(
+                                    left: 8.w,top: 5.h
                                   ),
                                   child: Text(
                                     " \$ ${snapshot.data!.docs[index]["fee"].toString()}",
@@ -218,7 +218,7 @@ class _ShopingCartState extends State<ShopingCart> {
                                       color: Color(0xFF477B72),
                                       fontSize: 22.sp,
                                       fontWeight: FontWeight.w800,
-                                      letterSpacing: -0.18,
+                                      letterSpacing: -0.18.w,
                                     )),
                                   ),
                                 ),

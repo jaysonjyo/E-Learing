@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:double_back_to_exit/non_web_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,9 @@ class _HomeState extends State<Home> {
     final firestore3 =
         FirebaseFirestore.instance.collection("Because You Viewed").snapshots();
 
-    return Scaffold(
+    return DoubleBackToExitWidget(
+        snackBarMessage: 'Press back again to exit',
+        child:Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -40,7 +43,7 @@ class _HomeState extends State<Home> {
                 color: Color(0xFF1D1B20),
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: 0.24,
+                letterSpacing: 0.24.w,
               )),
             ),
             Text(
@@ -50,7 +53,7 @@ class _HomeState extends State<Home> {
                 color: Color(0xFF477B72),
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: 0.24,
+                letterSpacing: 0.24.w,
               )),
             ),
 
@@ -68,7 +71,7 @@ class _HomeState extends State<Home> {
             },
             icon: Icon(
               Icons.shopping_cart_outlined,
-              size: 29,
+              size: 29.sp,
             ),
           )
         ],
@@ -78,7 +81,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 20),
+              padding:  EdgeInsets.only(left: 15.w, top: 20.h),
               child: Row(
                 children: [
                   Text (
@@ -88,7 +91,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                   SizedBox(
@@ -106,7 +109,7 @@ class _HomeState extends State<Home> {
                         color: Color(0xFF1D1B20),
                         fontSize: 19.sp,
                         fontWeight: FontWeight.w700,
-                        letterSpacing: 0.18,
+                        letterSpacing: 0.18.w,
                       )),
                     ),
                   ),
@@ -137,9 +140,9 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, position) {
                           return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding:  EdgeInsets.only(left: 10.w, right: 10.w),
                             child: Container(
-                              padding: const EdgeInsets.all(10),
+                              padding:  EdgeInsets.all(10.sp),
                               decoration: ShapeDecoration(
                                 shadows: [BoxShadow(
                                 color:Colors.grey,
@@ -158,7 +161,7 @@ class _HomeState extends State<Home> {
                               ),
                               child: Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding:  EdgeInsets.all(8.0.sp),
                                   child: Text(
                                     snapshot.data!.docs[position]["name"],
                                     style: GoogleFonts.plusJakartaSans(
@@ -166,7 +169,7 @@ class _HomeState extends State<Home> {
                                       color: Colors.black,
                                       fontSize: 15.sp,
                                       fontWeight: FontWeight.w700,
-                                      letterSpacing: 0.15,
+                                      letterSpacing: 0.15.h,
                                     )),
                                   ),
                                 ),
@@ -186,7 +189,7 @@ class _HomeState extends State<Home> {
                   }
                 }),
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 20),
+              padding:  EdgeInsets.only(left: 15.w, top: 20.h),
               child: Row(
                 children: [
                   Text(
@@ -196,7 +199,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                   SizedBox(
@@ -209,7 +212,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                 ],
@@ -241,7 +244,7 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, position) {
                           return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding:  EdgeInsets.only(left: 10.w, right: 10.w),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -292,8 +295,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 13, top: 10),
+                                      padding:  EdgeInsets.only(
+                                          left: 13.w, top: 10.h),
                                       child: Row(
                                         children: [
                                           Opacity( opacity: 0.50,
@@ -306,7 +309,7 @@ class _HomeState extends State<Home> {
                                                 fontSize: 20.sp,
                                                 fontFamily: 'Inter',
                                                 fontWeight: FontWeight.w600,
-                                                height: 0.10,
+                                                height: 0.10.h,
                                               ),
                                             ),
                                           ),
@@ -336,8 +339,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20, top: 10),
+                                      padding: EdgeInsets.only(
+                                          right: 20.w, top: 10.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
@@ -354,8 +357,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 6),
+                                      padding:  EdgeInsets.only(
+                                          left: 10.w, top: 6.h),
                                       child: Row(
                                         children: [
                                           Icon(Icons.person),
@@ -371,15 +374,15 @@ class _HomeState extends State<Home> {
                                               color: Color(0xFF060302),
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w400,
-                                              letterSpacing: -0.14,
+                                              letterSpacing: -0.14.w,
                                             )),
                                           )
                                         ],
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 121, top: 5),
+                                      padding:  EdgeInsets.only(
+                                          right: 121.w, top: 5.h),
                                       child: Text(
                                         " \$ ${snapshot.data!.docs[position]["fee"].toString()}",
                                         style: GoogleFonts.plusJakartaSans(
@@ -387,7 +390,7 @@ class _HomeState extends State<Home> {
                                           color: Color(0xFF477B72),
                                           fontSize: 22.sp,
                                           fontWeight: FontWeight.w800,
-                                          letterSpacing: -0.18,
+                                          letterSpacing: -0.18.w,
                                         )),
                                       ),
                                     ),
@@ -409,7 +412,7 @@ class _HomeState extends State<Home> {
                   }),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 20),
+              padding:  EdgeInsets.only(left: 15.w, top: 20.h),
               child: Row(
                 children: [
                   Text(
@@ -419,7 +422,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                   SizedBox(
@@ -432,7 +435,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                 ],
@@ -464,7 +467,7 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, position) {
                           return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding:  EdgeInsets.only(left: 10.w, right: 10.w),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -515,8 +518,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 12, top: 10),
+                                      padding:  EdgeInsets.only(
+                                          left: 12.w, top: 10.h),
                                       child: Row(
                                         children: [
                                           Opacity(   opacity: 0.50,
@@ -529,7 +532,7 @@ class _HomeState extends State<Home> {
                                                 fontSize: 20.sp,
                                                 fontFamily: 'Inter',
                                                 fontWeight: FontWeight.w600,
-                                                height: 0.10,
+                                                height: 0.10.h,
                                               ),
                                             ),
                                           ),SizedBox(width: 5.w,),
@@ -556,8 +559,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20, top: 10),
+                                      padding:  EdgeInsets.only(
+                                          right: 20.w, top: 10.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
@@ -574,8 +577,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 9, top: 6),
+                                      padding:  EdgeInsets.only(
+                                          left: 9.w, top: 6.h),
                                       child: Row(
                                         children: [
                                           Icon(Icons.person),
@@ -591,15 +594,15 @@ class _HomeState extends State<Home> {
                                               color: Color(0xFF060302),
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w400,
-                                              letterSpacing: -0.14,
+                                              letterSpacing: -0.14.w,
                                             )),
                                           )
                                         ],
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 120, top: 5),
+                                      padding:  EdgeInsets.only(
+                                          right: 120.w, top: 5.h),
                                       child: Text(
                                         "\$ ${snapshot.data!.docs[position]["fee"].toString()}",
                                         style: GoogleFonts.plusJakartaSans(
@@ -607,7 +610,7 @@ class _HomeState extends State<Home> {
                                           color: Color(0xFF477B72),
                                           fontSize: 22.sp,
                                           fontWeight: FontWeight.w800,
-                                          letterSpacing: -0.18,
+                                          letterSpacing: -0.18.w,
                                         )),
                                       ),
                                     ),
@@ -629,7 +632,7 @@ class _HomeState extends State<Home> {
                   }),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 20),
+              padding:  EdgeInsets.only(left: 15.w, top: 20.h),
               child: Row(
                 children: [
                   Text(
@@ -639,7 +642,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                   SizedBox(
@@ -652,7 +655,7 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF1D1B20),
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: 0.18,
+                      letterSpacing: 0.18.w,
                     )),
                   ),
                 ],
@@ -684,7 +687,7 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, position) {
                           return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding:  EdgeInsets.only(left: 10.w, right: 10.w),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -733,8 +736,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 13, top: 10),
+                                      padding:  EdgeInsets.only(
+                                          left: 13.w, top: 10.h),
                                       child: Row(
                                         children: [
                                           Opacity(   opacity: 0.50,
@@ -747,7 +750,7 @@ class _HomeState extends State<Home> {
                                                 fontSize: 20.sp,
                                                 fontFamily: 'Inter',
                                                 fontWeight: FontWeight.w600,
-                                                height: 0.10,
+                                                height: 0.10.h,
                                               ),
                                             ),
                                           ),
@@ -777,8 +780,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20, top: 10),
+                                      padding:  EdgeInsets.only(
+                                          right: 20.w, top: 10.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
@@ -795,8 +798,8 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 9, top: 6),
+                                      padding:  EdgeInsets.only(
+                                          left: 9.w, top: 6.h),
                                       child: Row(
                                         children: [
                                           Icon(Icons.person),
@@ -812,15 +815,15 @@ class _HomeState extends State<Home> {
                                               color: Color(0xFF060302),
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w400,
-                                              letterSpacing: -0.14,
+                                              letterSpacing: -0.14.w,
                                             )),
                                           )
                                         ],
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 120, top: 5),
+                                      padding:  EdgeInsets.only(
+                                          right: 120.w, top: 5.h),
                                       child: Text(
                                         "\$ ${snapshot.data!.docs[position]["fee"].toString()}",
                                         style: GoogleFonts.plusJakartaSans(
@@ -828,7 +831,7 @@ class _HomeState extends State<Home> {
                                           color: Color(0xFF477B72),
                                           fontSize: 22.sp,
                                           fontWeight: FontWeight.w800,
-                                          letterSpacing: -0.18,
+                                          letterSpacing: -0.18.w,
                                         )),
                                       ),
                                     ),
@@ -851,7 +854,7 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

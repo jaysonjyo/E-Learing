@@ -37,7 +37,7 @@ class _SlidState extends State<Slid> {
         ),
         globalFooter: SizedBox(
           width: double.infinity,
-          height: 60,
+          height: 60.h,
         ),
         pages: [
           PageViewModel(
@@ -97,28 +97,28 @@ class _SlidState extends State<Slid> {
             decoration: ShapeDecoration(
                 color: Color(0xD3F8C657),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5))),
+                    borderRadius: BorderRadius.circular(5.r))),
             child:  Center(
               child: Text('Done',
                   style: TextStyle(fontWeight: FontWeight.w600)),
             )),
         curve: Curves.fastLinearToSlowEaseIn,
-        controlsMargin: const EdgeInsets.all(16),
+        controlsMargin:  EdgeInsets.all(16.sp),
         controlsPadding: kIsWeb
-            ? const EdgeInsets.all(12.0)
-            : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-        dotsDecorator: const DotsDecorator(
-          size: Size(10.0, 10.0),
+            ?  EdgeInsets.all(12.0.sp)
+            :  EdgeInsets.fromLTRB(8.0.w, 4.0.h, 8.0.w, 4.0.h),
+        dotsDecorator:  DotsDecorator(
+          size: Size(10.0.sp, 10.0.sp),
           color: Color(0xFFBDBDBD),
-          activeSize: Size(22.0, 10.0),
+          activeSize: Size(22.0.sp, 10.0.sp),
           activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            borderRadius: BorderRadius.all(Radius.circular(25.0.r)),
           ),
         ),
-        dotsContainerDecorator: const ShapeDecoration(
+        dotsContainerDecorator:  ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            borderRadius: BorderRadius.all(Radius.circular(8.0.r)),
           ),
         ),
       ),

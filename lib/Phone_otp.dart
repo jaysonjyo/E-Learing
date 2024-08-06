@@ -25,7 +25,7 @@ class _OTPState extends State<OTP> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 250),
+              padding:  EdgeInsets.only(top: 250.h),
               child: OtpTextField(
                 borderRadius: BorderRadius.circular(10.r),
                 borderWidth: 1,
@@ -53,28 +53,6 @@ class _OTPState extends State<OTP> {
                 }, // end onSubmit
               ),
             ),
-            //  SizedBox(height: 250.h,),
-            // Container(
-            //   width: 200.w,
-            //   height: 60.h,
-            //   decoration: ShapeDecoration(
-            //       color: Colors.black,
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(20))),
-            //   child: Center(
-            //     child: Text(
-            //       'Continue',
-            //       style: GoogleFonts.jost(
-            //         textStyle: TextStyle(
-            //           color: Colors.white,
-            //           fontSize: 22.sp,
-            //           fontFamily: 'Jost',
-            //           fontWeight: FontWeight.w600,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

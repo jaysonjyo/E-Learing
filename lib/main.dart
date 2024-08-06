@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         // Use builder only if you need to use library outside ScreenUtilInit context
         builder: (_, child) {
-          return MaterialApp(
+          return MaterialApp(debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
               // This is the theme of your application.
