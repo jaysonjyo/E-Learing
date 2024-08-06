@@ -34,7 +34,7 @@ class _FavouritesState extends State<Favourites> {
           padding:  EdgeInsets.only(left: 50.w),
           child: Center(
             child: Text(
-              "Courses",
+              "Favourite",
               style: GoogleFonts.plusJakartaSans(
                   textStyle: TextStyle(
                 color: Color(0xFF1D1B20),

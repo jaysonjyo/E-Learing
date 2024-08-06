@@ -28,7 +28,7 @@ class _OTPState extends State<OTP> {
               padding:  EdgeInsets.only(top: 250.h),
               child: OtpTextField(
                 borderRadius: BorderRadius.circular(10.r),
-                borderWidth: 1,
+                borderWidth: 1.w,
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 numberOfFields: 6,

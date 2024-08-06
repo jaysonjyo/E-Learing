@@ -198,7 +198,8 @@ class _SignupState extends State<Signup> {
                           "email": email.text,
                           "id": auth.currentUser!.uid.toString(),
                           "security": password.text,
-                          "profile":""
+                          "profile":"",
+                          'premium':false
                         });
                         Fluttertoast.showToast(msg: 'Successfully registerd');
                         Navigator.of(context).push(MaterialPageRoute(
@@ -243,7 +244,7 @@ class _SignupState extends State<Signup> {
                       SizedBox(
                           width: 130.w,
                           child: Divider(
-                            thickness: 1,
+                            thickness: 1.sp,
                             color: Colors.black,
                           )),
                       SizedBox(
@@ -264,7 +265,7 @@ class _SignupState extends State<Signup> {
                       SizedBox(
                           width: 130.w,
                           child: Divider(
-                            thickness: 1,
+                            thickness: 1.sp,
                             color: Colors.black,
                           )),
                     ],

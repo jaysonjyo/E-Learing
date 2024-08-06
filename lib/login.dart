@@ -182,7 +182,7 @@ class _LoginState extends State<Login> {
                       SizedBox(
                           width: 130.w,
                           child: Divider(
-                            thickness: 1,
+                            thickness: 1.sp,
                             color: Colors.black,
                           )),
                       SizedBox(
@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
                       SizedBox(
                           width: 130.w,
                           child: Divider(
-                            thickness: 1,
+                            thickness: 1.sp,
                             color: Colors.black,
                           )),
                     ],

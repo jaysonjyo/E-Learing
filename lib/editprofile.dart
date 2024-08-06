@@ -268,7 +268,7 @@ class _EditprofileState extends State<Editprofile> {
                       padding: EdgeInsets.only(left: 55.w),
                       child: Divider(
                         height: 1.h,
-                        thickness: 1,
+                        thickness: 1.sp,
                         color: Colors.grey,
                       ),
                     ),SizedBox(height: 200.h,),

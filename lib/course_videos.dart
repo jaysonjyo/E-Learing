@@ -144,7 +144,8 @@ class _Course_VideoState extends State<Course_Video> {
               Padding(
                 padding:  EdgeInsets.only(
                     left: 20.w,right: 10.w,top: 6.h),
-                child: Divider(thickness: 1,height: 12.h,),
+                child: Divider(thickness: 1.sp
+                  ,height: 12.h,),
               );},
               ),
             ),

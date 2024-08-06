@@ -19,9 +19,9 @@ class _SplashState extends State<Splash> {
       // Obtain shared preferences.
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       if(prefs.containsKey("Token")){
-        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>BottamNavigation()));
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_)=>BottamNavigation()),(route)=> false);
       }else{
-        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Slid()));
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_)=>Slid()),(route)=> false);
       }
     });
     // TODO: implement initState

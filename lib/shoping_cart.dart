@@ -72,7 +72,7 @@ class _ShopingCartState extends State<ShopingCart> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 6.0,
                   mainAxisSpacing: 10.0,
-                  childAspectRatio: 300 / 390,
+                  childAspectRatio: 300 / 370,
                   shrinkWrap: true,
                   children: List.generate(
                     snapshot.data!.docs.length,

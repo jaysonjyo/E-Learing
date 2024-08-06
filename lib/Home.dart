@@ -223,7 +223,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(
               width: 500.w,
-              height: 250.h,
+              height: 230.h,
               child: StreamBuilder<QuerySnapshot>(
                   stream: firestore1,
                   builder: (BuildContext context,
@@ -340,7 +340,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
-                                          right: 20.w, top: 10.h),
+                                          right: 20.w, top: 7.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
@@ -358,7 +358,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     Padding(
                                       padding:  EdgeInsets.only(
-                                          left: 10.w, top: 6.h),
+                                          left: 10.w, top: 4.h),
                                       child: Row(
                                         children: [
                                           Icon(Icons.person),
@@ -446,7 +446,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(
               width: 500..w,
-              height: 250.h,
+              height: 230.h,
               child: StreamBuilder<QuerySnapshot>(
                   stream: firestore2,
                   builder: (BuildContext context,
@@ -560,7 +560,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     Padding(
                                       padding:  EdgeInsets.only(
-                                          right: 20.w, top: 10.h),
+                                          right: 20.w, top: 8.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
@@ -666,7 +666,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(
               width: 500..w,
-              height: 250.h,
+              height: 230.h,
               child: StreamBuilder<QuerySnapshot>(
                   stream: firestore3,
                   builder: (BuildContext context,
@@ -781,7 +781,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     Padding(
                                       padding:  EdgeInsets.only(
-                                          right: 20.w, top: 10.h),
+                                          right: 20.w, top: 8.h),
                                       child: SizedBox(
                                         width: 151.70.w,
                                         child: Text(
