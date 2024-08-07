@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning/shoping_cart.dart';
-import 'package:learning/video.dart';
+import 'package:learning/Home_pages/shoping_cart.dart';
+import 'package:learning/Home_pages/video.dart';
 
 class Save extends StatefulWidget {
   const Save({super.key});

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,47 +6,80 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:learning/Bottam_Navigationbar.dart';
-import 'package:learning/Home.dart';
-import 'package:learning/Phonenumber.dart';
-import 'package:learning/Signup.dart';
-import 'package:learning/reset_Password_email.dart';
+import 'package:learning/Home_pages/Home.dart';
+import 'package:learning/authentication/Phonenumber.dart';
+import 'package:learning/authentication/login.dart';
+import 'package:learning/authentication/reset_Password_email.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
-  var _formKey = GlobalKey<FormState>();
+class _SignupState extends State<Signup> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  bool isVisible=false;
-  FirebaseAuth auth = FirebaseAuth.instance;
+  bool isVisible = true;
   TextEditingController email = TextEditingController();
-  TextEditingController password= TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController confirmpassword = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance.collection("users");
+  var _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
-            key:_formKey,
+            key: _formKey,
             child: Column(
               children: [
                 SizedBox(
-                  height: 80.h,
+                  height: 75.h,
                 ),
                 Center(
                     child: Text(
-                  "Login",
+                  "Sign Up",
                   style: GoogleFonts.plusJakartaSans(
                       textStyle: TextStyle(
                           fontSize: 38.sp, fontWeight: FontWeight.w900)),
                 )),
                 SizedBox(
-                  height: 120.h,
+                  height: 40.h,
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(right: 250.w),
+                  child: Text(
+                    'Full Name',
+                    style: GoogleFonts.plusJakartaSans(
+                        textStyle: TextStyle(
+                            fontSize: 20.sp, fontWeight: FontWeight.w700)),
+                  ),
+                ),
+                SizedBox(
+                  height: 7.h,
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(left: 30.w, right: 30.w),
+                  child: TextFormField(
+                    controller: name,
+                    decoration: InputDecoration(
+                        hintText: "Name", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 15.h,
                 ),
                 Padding(
                   padding:  EdgeInsets.only(right: 285.w),
@@ -63,20 +97,20 @@ class _LoginState extends State<Login> {
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
                     controller: email,
-                      decoration: InputDecoration(
-                          hintText: "email", border: OutlineInputBorder()),
-                      validator: (value){
-                if (value!.isEmpty ||
-                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value)) {
-                return 'Enter a valid email!';
-                }
-                return null;
-                }
+                    decoration: InputDecoration(
+                        hintText: "email", border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty ||
+                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                        return 'Enter a valid email!';
+                      }
+                      return null;
+                    },
                   ),
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 15.h,
                 ),
                 Padding(
                   padding:  EdgeInsets.only(right: 248.w),
@@ -95,59 +129,87 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                     controller: password,
                     obscureText: isVisible,
-                      decoration: InputDecoration(
-                          hintText: "*************",suffixIcon: InkWell(child: Icon(Icons.visibility),onTap: (){
+                    decoration: InputDecoration(
+                        hintText: "Password...",
+                        suffixIcon: InkWell(
+                          child: Icon(Icons.visibility),
+                          onTap: () {
                             setState(() {
-                              isVisible=! isVisible;
+                              isVisible = !isVisible;
                             });
-                      },),
-                          border: OutlineInputBorder()),
-                    validator: (value){
-                    if (value!.isEmpty || value.length<6) {
-                      return 'Enter a valid password!....';
-                    }
-                    return null;
-                  },
-            
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(left: 220.w, top: 12.h),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) => Emailreset()));
+                          },
+                        ),
+                        border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter a valid password!....';
+                      }
+                      return null;
                     },
-                    child: Text('Forget Password?',
-                        style: GoogleFonts.plusJakartaSans(
-                          textStyle: TextStyle(
-                            color: Color(0xFFF8C657),
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 0.24.w,
-                          ),
-                        )),
                   ),
                 ),
                 SizedBox(
-                  height: 80.h,
+                  height: 20.h,
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(right: 180.w),
+                  child: Text(
+                    'Confirm Password',
+                    style: GoogleFonts.plusJakartaSans(
+                        textStyle: TextStyle(
+                            fontSize: 20.sp, fontWeight: FontWeight.w700)),
+                  ),
+                ),
+                SizedBox(
+                  height: 7.h,
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(left: 30.w, right: 30.w),
+                  child: TextFormField(
+                    controller: confirmpassword,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "Confirm Password",
+                        border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter a valid password!';
+                      }
+                      if (password.text != confirmpassword.text) {
+                        return "incorrect password";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 30.h,
                 ),
                 GestureDetector(
                   onTap: () async {
-                    print("hello");
                     final isValid = _formKey.currentState!.validate();
                     if (isValid) {
-                      await  auth.signInWithEmailAndPassword(email: email.text, password: password.text).then((Value){
-                      CheckLogin();
-                        Fluttertoast.showToast(msg: ' Successfully Login');
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => BottamNavigation()));
-                      }).onError((error, StackTrace){  Fluttertoast.showToast(msg: error.toString());});
+                      await auth
+                          .createUserWithEmailAndPassword(
+                              email: email.text, password: password.text)
+                          .then((Value) {
+                        firestore.doc(auth.currentUser!.uid.toString()).set({
+                          "name": name.text,
+                          "email": email.text,
+                          "id": auth.currentUser!.uid.toString(),
+                          "security": password.text,
+                          "profile":"",
+                          'premium':false
+                        });
+                        Fluttertoast.showToast(msg: 'Successfully registerd');
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => BottamNavigation()));
+                        CheckLogin();
+                      }).onError((error, StackTrace) {
+                        Fluttertoast.showToast(msg: error.toString());
+                      });
                     }
                     _formKey.currentState?.save();
-
-            
-            
                   },
                   child: Container(
                     width: 250.w,
@@ -160,7 +222,7 @@ class _LoginState extends State<Login> {
                     ),
                     child: Center(
                       child: Text(
-                        'LOGIN',
+                        'Sign Up',
                         style: GoogleFonts.plusJakartaSans(
                             textStyle: TextStyle(
                           color: Colors.black,
@@ -239,9 +301,10 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         width: 10.w,
                       ),
-                      GestureDetector(onTap: (){
-                        signInwithGoogle();
-                      },
+                      GestureDetector(
+                        onTap: () {
+                          signInwithGoogle();
+                        },
                         child: Container(
                           width: 80.h,
                           height: 46.w,
@@ -264,7 +327,7 @@ class _LoginState extends State<Login> {
                   padding:  EdgeInsets.only(left: 80.w, top: 20.h),
                   child: Row(
                     children: [
-                      Text('Don’t have an account?',
+                      Text('Already have an account?',
                           style: GoogleFonts.plusJakartaSans(
                             textStyle: TextStyle(
                               color: Colors.black,
@@ -278,9 +341,9 @@ class _LoginState extends State<Login> {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (_) => Signup()));
+                                MaterialPageRoute(builder: (_) => Login()));
                           },
-                          child: Text('Sign Up Here',
+                          child: Text('Login Here',
                               style: GoogleFonts.plusJakartaSans(
                                 textStyle: TextStyle(
                                   color: Color(0xFFF8C657),
@@ -301,21 +364,21 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
   Future<String?> signInwithGoogle() async {
     CheckLogin();
     try {
       final GoogleSignInAccount? googleSignInAccount =
-      await _googleSignIn.signIn();
+          await _googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount!.authentication;
+          await googleSignInAccount!.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
       await auth.signInWithCredential(credential).then((onValue) {
         Fluttertoast.showToast(msg: "Success");
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => Home()));
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>false);
       }).onError((error, stackTrace) {
         Fluttertoast.showToast(msg: error.toString());
       });
@@ -324,14 +387,10 @@ class _LoginState extends State<Login> {
       throw e;
     }
   }
-  void CheckLogin ()async{
+
+  void CheckLogin() async {
     // Obtain shared preferences.
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("Token", true);
   }
-
-
-
-
-
 }

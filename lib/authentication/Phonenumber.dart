@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning/Phone_otp.dart';
+import 'package:learning/authentication/Phone_otp.dart';
 
 class Phonenumber extends StatefulWidget {
   const Phonenumber({super.key});

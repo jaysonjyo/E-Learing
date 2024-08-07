@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:learning/Home.dart';
-import 'package:learning/Profile.dart';
-import 'package:learning/favourites.dart';
-import 'package:learning/ebooks.dart';
+import 'package:learning/Home_pages/Home.dart';
+import 'package:learning/Profile/Profile.dart';
+import 'package:learning/Home_pages/favourites.dart';
+import 'package:learning/E_Book/ebooks.dart';
 import 'package:learning/Search.dart';
-import 'package:learning/saved.dart';
+import 'package:learning/Saved_page/saved.dart';
 
 class BottamNavigation extends StatefulWidget {
   const BottamNavigation({super.key});

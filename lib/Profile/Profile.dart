@@ -4,11 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning/chat.dart';
-import 'package:learning/ebooks.dart';
-import 'package:learning/editprofile.dart';
-import 'package:learning/login.dart';
-import 'package:learning/shoping_cart.dart';
+import 'package:learning/Profile/chat.dart';
+import 'package:learning/E_Book/ebooks.dart';
+import 'package:learning/Profile/editprofile.dart';
+import 'package:learning/authentication/login.dart';
+import 'package:learning/Home_pages/shoping_cart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {

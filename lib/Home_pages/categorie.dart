@@ -4,7 +4,7 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning/video.dart';
+import 'package:learning/Home_pages/video.dart';
 
 class Categorie extends StatefulWidget {
   const Categorie({super.key});

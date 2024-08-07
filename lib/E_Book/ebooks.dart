@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning/chat.dart';
-import 'package:learning/pdfview.dart';
-import 'package:learning/shoping_cart.dart';
+import 'package:learning/Profile/chat.dart';
+import 'package:learning/E_Book/pdfview.dart';
+import 'package:learning/Home_pages/shoping_cart.dart';
 
 class Ebook extends StatefulWidget {
   const Ebook({super.key});

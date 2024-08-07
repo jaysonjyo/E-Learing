@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning/slid.dart';
 import 'package:learning/splash.dart';
-import 'package:learning/video.dart';
+import 'package:learning/Home_pages/video.dart';
 
 import 'firebase_options.dart';
 

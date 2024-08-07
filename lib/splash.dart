@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning/Bottam_Navigationbar.dart';
-import 'package:learning/Home.dart';
+import 'package:learning/Home_pages/Home.dart';
 import 'package:learning/slid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:learning/Home.dart';
+import 'package:learning/Home_pages/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Bottam_Navigationbar.dart';
 
 class OTP extends StatefulWidget {
   final String Verification;
@@ -43,7 +45,7 @@ class _OTPState extends State<OTP> {
                   try{
 
                     await auth.signInWithCredential(credentials);
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Home()));
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>false);
                     CheckLogin();
                   }catch(error){
                     Fluttertoast.showToast(msg: "error");
