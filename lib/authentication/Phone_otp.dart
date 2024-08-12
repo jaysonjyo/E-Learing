@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,7 @@ class OTP extends StatefulWidget {
 
 class _OTPState extends State<OTP> {
   final auth =FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance.collection("users");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +46,15 @@ class _OTPState extends State<OTP> {
 
                   try{
 
-                    await auth.signInWithCredential(credentials);
+                    await auth.signInWithCredential(credentials).then((onValue) {
+                      firestore.doc(auth.currentUser!.uid.toString()).set({
+                        "name": "",
+                        "id": auth.currentUser!.uid.toString(),
+                        "email":"",
+                        "security": "",
+                        "profile":"",
+                        "premium":false
+                      });});
                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>false);
                     CheckLogin();
                   }catch(error){

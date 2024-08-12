@@ -24,7 +24,7 @@ class _EbookState extends State<Ebook> {
     return DoubleBackToExitWidget(
       snackBarMessage: 'Press back again to exit',
       child:  Scaffold(
-        appBar: AppBar(backgroundColor: Colors.green,
+        appBar: AppBar(backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Padding(
             padding:  EdgeInsets.only(left: 50.w),
@@ -33,7 +33,7 @@ class _EbookState extends State<Ebook> {
                 "E-Books",
                 style: GoogleFonts.plusJakartaSans(
                     textStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 24.sp,
                       fontWeight: FontWeight.w800,
                       letterSpacing: 0.24.w,
@@ -50,13 +50,14 @@ class _EbookState extends State<Ebook> {
                       MaterialPageRoute(builder: (_) => ShopingCart()));
                 },
                 icon: Icon(
-                  Icons.shopping_cart_outlined, color: Colors.white,
+                  Icons.shopping_cart_outlined, color: Colors.black,
                   size: 29,
                 ),
               ),
             )
           ],
         ),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [

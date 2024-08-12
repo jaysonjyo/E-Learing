@@ -51,6 +51,7 @@ class _CategorieState extends State<Categorie> {
           )
         ],
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

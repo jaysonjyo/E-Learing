@@ -32,6 +32,7 @@ class _ProfileState extends State<Profile> {
       snackBarMessage: 'Press back again to exit',
       child:  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Padding(
             padding:  EdgeInsets.only(left: 50.w),
@@ -63,7 +64,7 @@ class _ProfileState extends State<Profile> {
               ),
             )
           ],
-        ),
+        ), backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: StreamBuilder<QuerySnapshot>(
               stream: firestoreprofile,
@@ -121,7 +122,7 @@ class _ProfileState extends State<Profile> {
                         )),
                       ),
                       Text(
-                        auth.currentUser!.email.toString(),
+                        snapshot.data!.docs[index]["email"].toString(),
                         style: GoogleFonts.plusJakartaSans(
                             textStyle: TextStyle(
                           color: Color(0xFF545454),

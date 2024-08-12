@@ -12,6 +12,8 @@ import 'package:learning/authentication/login.dart';
 import 'package:learning/authentication/reset_Password_email.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../toast-message.dart';
+
 class Signup extends StatefulWidget {
   const Signup({super.key});
 
@@ -377,12 +379,18 @@ class _SignupState extends State<Signup> {
         idToken: googleSignInAuthentication.idToken,
       );
       await auth.signInWithCredential(credential).then((onValue) {
-        Fluttertoast.showToast(msg: "Success");
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>false);
-      }).onError((error, stackTrace) {
-        Fluttertoast.showToast(msg: error.toString());
-      });
-    } on FirebaseAuthException catch (e) {
+        firestore.doc(auth.currentUser!.uid.toString()).set({
+          "name": auth.currentUser!.displayName.toString(),
+          "id": auth.currentUser!.uid.toString(),
+          "email":auth.currentUser!.email.toString(),
+          "security": "",
+          "profile":auth.currentUser!.photoURL.toString(),
+          "premium":false
+        });});
+      Navigator.of(context)
+          .pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>(false))..onError((error, stackTrace) => ToastMessage()
+          .toastmessage(message: error.toString()));
+    } on FirebaseAuthException catch (e){
       print(e.message);
       throw e;
     }

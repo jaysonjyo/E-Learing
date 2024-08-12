@@ -29,7 +29,7 @@ class _ChatState extends State<Chat> {
         .collection("chat")
         .snapshots();
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -133,6 +133,7 @@ class _ChatState extends State<Chat> {
           SizedBox(height: 80.h,)
         ],
       ),
+
       bottomSheet: Padding(
         padding:  EdgeInsets.only(bottom: 20.h, right: 15.w, left: 15.w),
         child: TextField(

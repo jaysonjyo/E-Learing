@@ -24,6 +24,7 @@ class _ShopingCartState extends State<ShopingCart> {
         .snapshots();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Padding(
           padding:  EdgeInsets.only(right: 60.w),
@@ -49,7 +50,7 @@ class _ShopingCartState extends State<ShopingCart> {
             color: Color(0xFF477B72),
           ),
         ),
-      ),
+      ), backgroundColor: Colors.white,
       body: StreamBuilder<QuerySnapshot>(
           stream: firestore,
           builder:

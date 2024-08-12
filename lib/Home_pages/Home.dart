@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
     return DoubleBackToExitWidget(
         snackBarMessage: 'Press back again to exit',
         child:Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Row(
           children: [

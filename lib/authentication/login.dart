@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,11 +24,13 @@ class _LoginState extends State<Login> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool isVisible=false;
   FirebaseAuth auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance.collection("users");
   TextEditingController email = TextEditingController();
   TextEditingController password= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
@@ -313,6 +316,14 @@ class _LoginState extends State<Login> {
         idToken: googleSignInAuthentication.idToken,
       );
       await auth.signInWithCredential(credential).then((onValue) {
+        firestore.doc(auth.currentUser!.uid.toString()).set({
+          "name": auth.currentUser!.displayName.toString(),
+          "id": auth.currentUser!.uid.toString(),
+          "email":auth.currentUser!.email.toString(),
+          "security": "",
+          "profile":auth.currentUser!.photoURL.toString(),
+          "premium":false
+        });
         Fluttertoast.showToast(msg: "Success");
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => BottamNavigation()),(route)=>false);
       }).onError((error, stackTrace) {

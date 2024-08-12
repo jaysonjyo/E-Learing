@@ -60,6 +60,7 @@ class _Course_VideoState extends State<Course_Video> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

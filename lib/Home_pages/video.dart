@@ -172,7 +172,8 @@ class _VideoState extends State<Video> {
           .doc(auth.currentUser!.uid.toString())
           .collection("ADD_Cart");
       return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar( backgroundColor: Colors.white,),
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

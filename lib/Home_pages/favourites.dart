@@ -28,7 +28,9 @@ class _FavouritesState extends State<Favourites> {
         .doc(auth.currentUser!.uid.toString())
       .collection("favourites");
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Padding(
           padding:  EdgeInsets.only(left: 50.w),

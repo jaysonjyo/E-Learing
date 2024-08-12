@@ -26,7 +26,7 @@ class _SearchState extends State<Search> {
       child:  Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.black,
             title: Container(
               decoration: ShapeDecoration(
                   color: Colors.white,
@@ -62,12 +62,12 @@ class _SearchState extends State<Search> {
                   },
                   icon: Icon(
                     Icons.shopping_cart_outlined,
-                    size: 29.sp,
+                    size: 29.sp,color: Colors.white,
                   ),
                 ),
               )
             ],
-          ),
+          ), backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(children: [StreamBuilder<QuerySnapshot>(
               stream: firestore,

@@ -31,13 +31,13 @@ class _SaveState extends State<Save> {
     return DoubleBackToExitWidget(
       snackBarMessage: 'Press back again to exit',
       child:  Scaffold(
-        appBar: AppBar(
+        appBar: AppBar( backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           title: Padding(
             padding:  EdgeInsets.only(left: 50.w),
             child: Center(
               child: Text(
-                "Courses",
+                " Saved Courses",
                 style: GoogleFonts.plusJakartaSans(
                     textStyle: TextStyle(
                       color: Color(0xFF1D1B20),
@@ -63,7 +63,7 @@ class _SaveState extends State<Save> {
               ),
             )
           ],
-        ),
+        ), backgroundColor: Colors.white,
         body: StreamBuilder<QuerySnapshot>(
             stream: firestoreSave,
             builder:

@@ -17,6 +17,7 @@ class _EmailresetState extends State<Emailreset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(children: [
           SizedBox(height: 100.h,),

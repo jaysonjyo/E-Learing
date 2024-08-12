@@ -19,8 +19,10 @@ class _BottamNavigationState extends State<BottamNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(showSelectedLabels: false,
-        backgroundColor: Colors.yellow,
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: true,
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
         onTap: (index) {
           setState(() {
             currentIndex = index;

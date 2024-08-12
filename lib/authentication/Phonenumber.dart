@@ -19,6 +19,7 @@ class _PhonenumberState extends State<Phonenumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding:  EdgeInsets.only(top: 150.h),
