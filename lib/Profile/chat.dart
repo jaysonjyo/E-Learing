@@ -28,6 +28,7 @@ class _ChatState extends State<Chat> {
         .doc(auth.currentUser!.uid.toString())
         .collection("chat")
         .snapshots();
+    var _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar( backgroundColor: Colors.white,
         leading: IconButton(
@@ -134,29 +135,40 @@ class _ChatState extends State<Chat> {
         ],
       ),
 
-      bottomSheet: Padding(
-        padding:  EdgeInsets.only(bottom: 20.h, right: 15.w, left: 15.w),
-        child: TextField(
-          controller: chattext,
-          decoration: InputDecoration(
-              hintText: "Type message..",
-              prefixIcon: Icon(Icons.insert_emoticon_outlined),
-              suffixIcon: IconButton(onPressed: (){
-                final id = DateTime.now().microsecondsSinceEpoch.toString();
-                firestore.doc(id).set({
-                  "id":id,
-                  "message":chattext.text.toString(),
-                  "respones":"",
-                }).then((onValue){
-                  chattext.clear();
-                });
-              },
-                icon: Icon(
-                  Icons.send,
+      bottomSheet: Form(
+        key: _formKey,
+        child: Padding(
+
+          padding:  EdgeInsets.only(bottom: 20.h, right: 15.w, left: 15.w),
+          child: TextFormField(
+            controller: chattext,
+            decoration: InputDecoration(
+                hintText: "Type message..",
+                prefixIcon: Icon(Icons.insert_emoticon_outlined),
+                suffixIcon: IconButton(onPressed: (){
+                  if(_formKey.currentState!.validate()){  final id = DateTime.now().microsecondsSinceEpoch.toString();
+                  firestore.doc(id).set({
+                    "id":id,
+                    "message":chattext.text.toString(),
+                    "respones":"",
+                  }).then((onValue){
+                    chattext.clear();
+                  });}
+
+                },
+                  icon: Icon(
+                    Icons.send,
+                  ),
                 ),
-              ),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10.r))),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10.r))),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'please type message';
+              }
+              return null;
+            },
+          ),
         ),
       ),
 
