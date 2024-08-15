@@ -137,7 +137,6 @@ class _LoginState extends State<Login> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    print("hello");
                     final isValid = _formKey.currentState!.validate();
                     if (isValid) {
                       await  auth.signInWithEmailAndPassword(email: email.text, password: password.text).then((Value){
