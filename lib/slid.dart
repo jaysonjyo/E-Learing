@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:learning/authentication/Signup.dart';
 import 'package:learning/authentication/login.dart';
 import 'package:learning/splash.dart';
 
@@ -18,7 +19,7 @@ class _SlidState extends State<Slid> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => Login()),
+      MaterialPageRoute(builder: (_) => Signup()),
     );
   }
 

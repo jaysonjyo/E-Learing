@@ -69,6 +69,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
+                    style: TextStyle(decorationThickness: 0.sp),
                     controller: name,
                     decoration: InputDecoration(
                         hintText: "Name", border: OutlineInputBorder()),
@@ -98,6 +99,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
+                    style: TextStyle(decorationThickness: 0.sp),
                     controller: email,
                     decoration: InputDecoration(
                         hintText: "email", border: OutlineInputBorder()),
@@ -168,6 +170,7 @@ class _SignupState extends State<Signup> {
                 Padding(
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
+                    style: TextStyle(decorationThickness: 0.sp),
                     controller: confirmpassword,
                     obscureText: true,
                     decoration: InputDecoration(

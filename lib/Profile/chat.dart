@@ -141,6 +141,7 @@ class _ChatState extends State<Chat> {
 
           padding:  EdgeInsets.only(bottom: 20.h, right: 15.w, left: 15.w),
           child: TextFormField(
+            style: TextStyle(decorationThickness: 0.sp),
             controller: chattext,
             decoration: InputDecoration(
                 hintText: "Type message..",

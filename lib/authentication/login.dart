@@ -65,6 +65,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
+                      style: TextStyle(decorationThickness: 0.sp),
                     controller: email,
                       decoration: InputDecoration(
                           hintText: "email", border: OutlineInputBorder()),
@@ -96,6 +97,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding:  EdgeInsets.only(left: 30.w, right: 30.w),
                   child: TextFormField(
+                    style: TextStyle(decorationThickness: 0.sp),
                     controller: password,
                     obscureText: isVisible,
                       decoration: InputDecoration(

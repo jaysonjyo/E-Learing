@@ -34,7 +34,7 @@ class _SearchState extends State<Search> {
                       borderRadius: BorderRadius.circular(20.r))),
               child: TextField(
                 controller: search,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.black,decorationThickness: 0.sp),
                 decoration: InputDecoration(
                     hintText: "Search....",
                     suffixIcon: Icon(Icons.search),

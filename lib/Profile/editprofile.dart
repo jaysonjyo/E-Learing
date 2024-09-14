@@ -77,9 +77,9 @@ class _EditprofileState extends State<Editprofile> {
               );
             }
             if (snapshot.hasError) {
-              return Center(
-                child: Text("Error"),
-              );
+              // return Center(
+              //   child: Text("Error"),
+              // );
             }
             if (snapshot.hasData) {
               return SingleChildScrollView(
@@ -96,12 +96,13 @@ class _EditprofileState extends State<Editprofile> {
                                 decoration: ShapeDecoration(
                                     color: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(65.r))),
+                                        borderRadius: BorderRadius.circular(65.r))
+                                ),
                                 child: ClipOval(
                                   child: image != null
                                       ? Image.file(
                                           image!.absolute,
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.cover,
                                         )
                                       : Center(child: Icon(Icons.person,size: 50.sp,)),
                                 ),
@@ -137,6 +138,7 @@ class _EditprofileState extends State<Editprofile> {
                                         BorderRadius.all(Radius.circular(10.0.r))),
                                 title: Text("Enter your name"),
                                 content: TextField(
+                                  style: TextStyle(decorationThickness: 0.sp),
                                   controller: name,
                                   decoration: InputDecoration(
                                       border: OutlineInputBorder(
@@ -159,11 +161,11 @@ class _EditprofileState extends State<Editprofile> {
                                           .update({"name": name.text}).then(
                                               (onValue) {
                                         name.clear();
-                                        Fluttertoast.showToast(
-                                            msg: 'Updated Successfully');
+                                      //  Fluttertoast.showToast(
+                                        //    msg: 'Updated Successfully');
                                         Navigator.of(context).pop();
                                       }).onError((error, stackTrace) {
-                                        Fluttertoast.showToast(msg: 'Error');
+                                       // Fluttertoast.showToast(msg: 'Error');
                                       });
                 
                                     },

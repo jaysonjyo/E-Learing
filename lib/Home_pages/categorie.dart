@@ -4,6 +4,7 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning/Home_pages/shoping_cart.dart';
 import 'package:learning/Home_pages/video.dart';
 
 class Categorie extends StatefulWidget {
@@ -44,9 +45,13 @@ class _CategorieState extends State<Categorie> {
         actions: [
           Padding(
             padding:  EdgeInsets.only(right: 20.w),
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              size: 29.sp,
+            child: GestureDetector(onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ShopingCart()));
+            },
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                size: 29.sp,
+              ),
             ),
           )
         ],

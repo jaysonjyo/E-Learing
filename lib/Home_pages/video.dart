@@ -272,7 +272,7 @@ class _VideoState extends State<Video> {
                                     setState(() {
                                       favourites == true;
                                     });
-                                    Fluttertoast.showToast(msg: "Added");
+                                   // Fluttertoast.showToast(msg: "Added");
                                   }).onError((error, StackTrace) {
                                     Fluttertoast.showToast(
                                         msg: error.toString());
@@ -394,7 +394,7 @@ class _VideoState extends State<Video> {
                                     Razorpay razorpay = Razorpay();
                                     var options = {
                                       'key': 'rzp_test_gKANZdsNdLqaQs',
-                                      'amount': 100,
+                                      'amount': 500*100,
                                       'name': 'Acme Corp.',
                                       'description': 'Fine T-Shirt',
                                       'retry': {
